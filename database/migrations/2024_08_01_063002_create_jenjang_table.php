@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('jenjang', function (Blueprint $table) {
             $table->id();
             $table->string('nama_jenjang');
-            $table->string('tahun_berdiri');
-            $table->string('sejarah');
-            $table->string('struktur_organisasi');
-            $table->string('visi_misi');
+            $table->string('tahun_berdiri')->nullable();
+            $table->string('sejarah')->nullable();
+            $table->string('struktur_organisasi')->nullable();
+            $table->string('visi_misi')->nullable();
+            $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
     }

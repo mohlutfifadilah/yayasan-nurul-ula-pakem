@@ -3,7 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Jenjang;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +25,64 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $role = ['admin-MI', 'admin-PAUD', 'admin-RA'];
+
+        $user_roles = [2, 3, 4];
+        $user_email = [
+            'adminMI@admin.com',
+            'adminPAUD@admin.com',
+            'adminRA@admin.com',
+        ];
+        $user_password = [
+            'adminMI02',
+            'adminPAUD03',
+            'adminRA04',
+        ];
+
+        $jenjang_id = [1, 2, 3];
+        $jenjang_nama = ['MI', 'PAUD', 'RA'];
+
+        // SUPERADMIN
+        User::create([
+            'id_role' => 1,
+            'id_jenjang' => null,
+            'foto' => null,
+            'email' => 'superadmin@admin.com',
+            'password' => Hash::make('superadmin01'),
+        ]);
+
+        Role::create([
+            'nama_role' => 'superadmin',
+        ]);
+
+        // Role
+
+        foreach($role as $r){
+            Role::create([
+                'nama_role' => $r,
+            ]);
+        }
+
+        // Users
+
+
+        foreach($user_roles as $index => $user_role){
+            User::create([
+                'id_role' => $user_role,
+                'id_jenjang' => $jenjang_id[$index],
+                'foto' => null,
+                'email' => $user_email[$index],
+                'password' => Hash::make($user_password[$index]),
+            ]);
+        }
+
+        // Jenjang
+
+        foreach($jenjang_nama as $j){
+            Jenjang::create([
+                'nama_jenjang' => $j,
+            ]);
+        }
     }
 }
