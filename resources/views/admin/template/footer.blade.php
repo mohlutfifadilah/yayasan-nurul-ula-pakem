@@ -3,7 +3,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Website Booking Pendakian Gunung Slamet via Dipajaya 2024</span>
+                        <span>Copyright &copy; Website Admin Pengelolaan Sistem Informasi Yayasan Bina Akhlaq Pakem 2024</span>
                     </div>
                 </div>
             </footer>

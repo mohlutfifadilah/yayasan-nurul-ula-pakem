@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GantiPassword;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Admin
+
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return view('main');
 });
+
+# Admin
+Route::get('/dashboard',  [DashboardController::class, 'index']);
+Route::resource('profil', ProfilController::class);
+Route::resource('users', UsersController::class);
+
+Route::get('/gantiPassword/{id}', [GantiPassword::class, 'change'])->name('change');
+Route::put('/updatePassword/{id}', [GantiPassword::class, 'update'])->name('update-password');
 
 // Login
 Route::get('/login', [LoginController::class, 'index']);

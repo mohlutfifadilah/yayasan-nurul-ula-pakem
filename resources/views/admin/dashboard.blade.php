@@ -10,7 +10,7 @@
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
     </div>
 
-    <!-- Content Row -->
+    {{-- <!-- Content Row -->
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->
@@ -156,6 +156,6 @@
     };
 
     var processedClimberData = {!! json_encode($processedClimberData) !!}; // Akses data dari controller
-</script>
+</script> --}}
 
 @include('admin.template.footer')
