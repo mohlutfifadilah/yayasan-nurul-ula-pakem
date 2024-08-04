@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -18,10 +19,10 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect('dashboard')->withSuccess('Selamat datang, Admin');
+            return redirect('dashboard');
         }
-
-        return redirect("login")->with('error', 'Email atau Password salah!');
+        Alert::alert('Kesalahan', 'Email atau Password Salah ', 'error');
+        return redirect("login");
     }
 
     public function logout(){

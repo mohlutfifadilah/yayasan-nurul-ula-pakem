@@ -102,7 +102,8 @@
                                         </div>
                                         <hr class="mt-5">
                                         <div class="d-flex mb-3">
-                                            <button type="submit" class="btn btn-sm btn-block btn-warning ml-auto text-white"><i class="fas fa-edit"></i></i>Ubah</a>
+                                            <button type="submit" class="btn btn-sm mr-5 btn-warning text-white"><i class="fas fa-edit"></i></i> Ubah</button>
+                                            <a href="{{ route('profil.index') }}" class="btn btn-sm btn-info text-white"><i class="fas fa-arrow-alt-circle-left"></i></i> Kembali</a>
                                         </div>
                                     </div>
                                 </div>

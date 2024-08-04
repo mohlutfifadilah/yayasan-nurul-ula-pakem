@@ -26,7 +26,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="oldPassword">Password Lama</label>
-                                            <input type="text" class="form-control @if(session('oldPassword')) is-invalid @endif @error('oldPassword') is-invalid @enderror" id="oldPassword" placeholder="Password Lama" name="oldPassword" aria-describedby="oldPassword">
+                                            <input type="password" class="form-control @if(session('oldPassword')) is-invalid @endif @error('oldPassword') is-invalid @enderror" id="oldPassword" name="oldPassword" aria-describedby="oldPassword">
                                             @error('oldPassword')
                                                 <small id="oldPassword" class="text-danger">
                                                     {{ $message }}
@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="form-group mt-4">
                                             <label for="newPassword">Password Baru</label>
-                                            <input type="text" class="form-control @if(session('newPassword')) is-invalid @endif @error('newPassword') is-invalid @enderror" id="newPassword" placeholder="Password Baru" name="newPassword" aria-describedby="newPassword">
+                                            <input type="password" class="form-control @if(session('newPassword')) is-invalid @endif @error('newPassword') is-invalid @enderror" id="newPassword" name="newPassword" aria-describedby="newPassword">
                                             @error('newPassword')
                                                 <small id="newPassword" class="text-danger">
                                                     {{ $message }}
@@ -54,11 +54,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="password_confirmation">Konfirmasi Password</label>
-                                            <input type="text" class="form-control @if(session('newPassword')) is-invalid @endif @error('newPassword') is-invalid @enderror" id="password_confirmation" placeholder="Konfirmasi Password" name="password_confirmation" aria-describedby="password_confirmation">
+                                            <input type="password" class="form-control @if(session('newPassword')) is-invalid @endif @error('newPassword') is-invalid @enderror" id="password_confirmation" name="password_confirmation" aria-describedby="password_confirmation">
                                         </div>
                                         <hr class="mt-5">
                                         <div class="d-flex mb-3">
-                                            <button type="submit" class="btn btn-sm btn-block btn-warning ml-auto text-white"><i class="fas fa-edit"></i></i>Ubah</a>
+                                            <button type="submit" class="btn btn-sm mr-5 btn-warning text-white"><i class="fas fa-edit"></i></i> Ubah</button>
+                                            <a href="{{ route('profil.index') }}" class="btn btn-sm btn-info text-white"><i class="fas fa-arrow-alt-circle-left"></i></i> Kembali</a>
                                         </div>
                                     </div>
                                 </div>

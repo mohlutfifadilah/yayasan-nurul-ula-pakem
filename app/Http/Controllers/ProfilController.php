@@ -96,24 +96,28 @@ class ProfilController extends Controller
         ]);
 
         if ($validator->fails()) {
+            Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
             return redirect()->route('profil.edit', $id)->withErrors($validator)
                 ->withInput()->with(['status' => 'Terjadi Kesalahan', 'title' => 'Edit Profil', 'type' => 'error']);
         }
 
         if($user->id_jenjang){
             if (is_null($request->jenjang)) {
+                Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
                 return redirect()->route('profil.edit', $id)->with('jenjang', 'Jenjang harus diisi');
             }
         }
 
         // Validasi apakah input email valid
         if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
             return redirect()->route('profil.edit', $id)->with('email', 'Format Email tidak valid');
         }
 
         // Cek apakah embed HTML sudah ada di tabel desa
         if($request->email != $user->email){
             if (User::where('email', $request->email)->exists()) {
+                Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
                 return redirect()->back()->withInput()->with('email', 'Email sudah digunakan!');
             }
         }
