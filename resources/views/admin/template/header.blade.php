@@ -95,31 +95,49 @@
                     <span>Jenjang</span></a>
             </li>
 
-             {{-- <!-- Nav Item - Kewarganegaraan -->
-            <li class="nav-item {{ Request::segment(1) === 'kewarganegaraan' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('kewarganegaraan.index') }}">
-                    <i class="fas fa-fw fa-street-view"></i>
-                    <span>Kewarganegaraan</span></a>
-            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-             <!-- Nav Item - Identitas -->
-            <li class="nav-item {{ Request::segment(1) === 'identitas' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('identitas.index') }}">
-                    <i class="fas fa-fw fa-address-card"></i>
-                    <span>Identitas</span></a>
-            </li>
+            @php
+                $jenjang = \App\Models\Jenjang::all();
+            @endphp
 
-             <!-- Nav Item - Berita -->
-            <li class="nav-item {{ Request::segment(1) === 'berita' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('berita.index') }}">
-                    <i class="fas fa-fw fa-newspaper"></i>
-                    <span>Berita</span></a>
-            </li>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Jenjang
+            </div>
+
+            @foreach ($jenjang as $j)
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item {{ Request::segment(1) === $j->nama_jenjang ? 'active' : '' }}">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $j->nama_jenjang }}"
+                        aria-expanded="true" aria-controls="{{ $j->nama_jenjang }}">
+                        <i class="fas fa-fw fa-school"></i>
+                        <span>{{ $j->nama_jenjang }}</span>
+                    </a>
+                    <div id="{{ $j->nama_jenjang }}" class="collapse" aria-labelledby="headingUtilities"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Data {{ $j->nama_jenjang }} :</h6>
+                            <a class="collapse-item" href="utilities-color.html">Pegawai</a>
+                            <a class="collapse-item" href="utilities-border.html">Profil</a>
+                        </div>
+                    </div>
+                </li>
+            @endforeach
+                {{-- <!-- Nav Item - Jenjang -->
+                <li class="nav-item {{ Request::segment(1) === $j->nama_jenjang ? 'active' : '' }}">
+                    <a href="" class="nav-link collapsed"></a>
+                    <a class="nav-link" href="{{ route($j->nama_jenjang . '.index') }}">
+                        <i class="fas fa-fw fa-stream"></i>
+                        <span>{{ $j->nama_jenjang }}</span>
+                    </a>
+                </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
+            {{-- <!-- Heading -->
             <div class="sidebar-heading">
                 Booking
             </div>
