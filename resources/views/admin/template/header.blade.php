@@ -81,14 +81,14 @@
                     <span>User</span></a>
             </li>
 
-            {{-- <!-- Nav Item - Blacklist -->
-            <li class="nav-item {{ Request::segment(1) === 'blacklist' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('blacklist.index') }}">
+            <!-- Nav Item - Role -->
+            <li class="nav-item {{ Request::segment(1) === 'role' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('role.index') }}">
                     <i class="fas fa-fw fa-user-times"></i>
-                    <span>Blacklist</span></a>
+                    <span>Role</span></a>
             </li>
 
-             <!-- Nav Item - Kewarganegaraan -->
+             {{-- <!-- Nav Item - Kewarganegaraan -->
             <li class="nav-item {{ Request::segment(1) === 'kewarganegaraan' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('kewarganegaraan.index') }}">
                     <i class="fas fa-fw fa-street-view"></i>

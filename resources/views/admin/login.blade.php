@@ -54,7 +54,7 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2 text-center">
-                    <img src="{{ asset('logo.png') }}" alt="" style="width: 70px; height: 70px;">
+                    <img src="{{ asset('logo.png') }}" alt="" style="width: 150px; height: 150px;">
                     <h5 class="card-title text-center pb-0 fs-4">Admin - Yayasan Nurul Ula Pakem</h5>
                     <p class="text-center small">Masukkan email & password anda</p>
                   </div>
