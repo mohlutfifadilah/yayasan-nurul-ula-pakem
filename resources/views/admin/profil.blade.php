@@ -12,13 +12,13 @@
                         <div class="card-body">
                             @php
                                 $role = \App\Models\Role::find($user->id_role);
-                                $jenjang = \App\Models\Jenjang::find($user->id_jenjang);
+                                // $jenjang = \App\Models\Jenjang::find($user->id_jenjang);
                             @endphp
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="text-center mb-3">
                                         @if($user->foto)
-                                            <img src="{{ asset('storage/foto-profil/' . $user->foto ) }}" alt="" class="img-fluid" style="width: 150px; height: 150px;">
+                                            <img src="{{ asset('storage/foto-profil/' . $user->foto ) }}" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
                                         @else
                                             <p class="mt-5">Belum ada Foto</p>
                                         @endif
@@ -28,10 +28,10 @@
                                     <dl>
                                         <dt>Role</dt>
                                         <dd>{{ $role->nama_role }}</dd>
-                                        @if ($user->id_jenjang)
+                                        {{-- @if ($user->id_jenjang)
                                             <dt>Jenjang</dt>
                                             <dd>{{ $jenjang->nama_jenjang }}</dd>
-                                        @endif
+                                        @endif --}}
                                         <dt>Email</dt>
                                         <dd>{{ $user->email }}</dd>
                                     </dl>

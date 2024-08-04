@@ -11,7 +11,7 @@
                         <div class="card-body">
                             @php
                                 $user_role = \App\Models\Role::find($user->id_role);
-                                $user_jenjang = \App\Models\Jenjang::find($user->id_jenjang);
+                                // $user_jenjang = \App\Models\Jenjang::find($user->id_jenjang);
                             @endphp
                             <form action="{{ route('profil.update', $user->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -65,7 +65,7 @@
                                                 </small>
                                             @endif
                                         </div>
-                                        @if ($user->id_jenjang)
+                                        {{-- @if ($user->id_jenjang)
                                             <div class="form-group">
                                                 <label for="jenjang">Jenjang</label>
                                                 <select class="form-control @if(session('jenjang')) is-invalid @endif @error('jenjang') is-invalid @enderror" id="jenjang" name="jenjang">
@@ -85,7 +85,7 @@
                                                     </small>
                                                 @endif
                                             </div>
-                                        @endif
+                                        @endif --}}
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="text" class="form-control @if(session('email')) is-invalid @endif @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" aria-describedby="email" value="{{ $user->email }}">

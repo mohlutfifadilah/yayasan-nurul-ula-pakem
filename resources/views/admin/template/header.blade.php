@@ -11,6 +11,11 @@
 
     <title>Admin - @yield('title')</title>
 
+
+    <!-- Favicons -->
+    <link href="{{ asset('logo.png') }}" rel="icon">
+    <link href="{{ asset('logo.png') }}" rel="apple-touch-icon">
+
     <!-- Custom fonts for this template-->
     <link href="{{ asset('sbadmin2/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -28,6 +33,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -66,14 +74,14 @@
                 Data
             </div>
 
-            {{-- <!-- Nav Item - Pengguna -->
+            <!-- Nav Item - User -->
             <li class="nav-item {{ Request::segment(1) === 'users' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('users.index') }}">
-                    <i class="fas fa-fw fa-walking"></i>
-                    <span>Pengguna</span></a>
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>User</span></a>
             </li>
 
-            <!-- Nav Item - Blacklist -->
+            {{-- <!-- Nav Item - Blacklist -->
             <li class="nav-item {{ Request::segment(1) === 'blacklist' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('blacklist.index') }}">
                     <i class="fas fa-fw fa-user-times"></i>
@@ -128,7 +136,7 @@
                 <a class="nav-link" href="{{ route('riwayat.index') }}">
                     <i class="fas fa-fw fa-history"></i>
                     <span>Riwayat</span></a>
-            </li>
+            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -136,7 +144,7 @@
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div> --}}
+            </div>
 
         </ul>
         <!-- End of Sidebar -->
@@ -162,6 +170,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @if (Auth::user()->foto)
+                                    <img src="{{ asset('storage/foto-profil/' . Auth::user()->foto) }}" alt="" class="img-profile rounded-circle mr-2">
+                                @endif
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->email }}</span>
                             </a>
                             <!-- Dropdown - User Information -->

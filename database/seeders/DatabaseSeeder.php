@@ -46,7 +46,6 @@ class DatabaseSeeder extends Seeder
         // SUPERADMIN
         User::create([
             'id_role' => 1,
-            'id_jenjang' => null,
             'foto' => null,
             'email' => 'superadmin@admin.com',
             'password' => Hash::make('superadmin01'),
@@ -70,7 +69,6 @@ class DatabaseSeeder extends Seeder
         foreach($user_roles as $index => $user_role){
             User::create([
                 'id_role' => $user_role,
-                'id_jenjang' => $jenjang_id[$index],
                 'foto' => null,
                 'email' => $user_email[$index],
                 'password' => Hash::make($user_password[$index]),
