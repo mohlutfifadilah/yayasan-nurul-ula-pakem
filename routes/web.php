@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GantiPassword;
+use App\Http\Controllers\JenjangController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RoleController;
@@ -30,6 +31,7 @@ Route::get('/dashboard',  [DashboardController::class, 'index']);
 Route::resource('profil', ProfilController::class);
 Route::resource('users', UsersController::class);
 Route::resource('role', RoleController::class);
+Route::resource('jenjang', JenjangController::class);
 
 Route::get('/gantiPassword/{id}', [GantiPassword::class, 'change'])->name('change');
 Route::put('/updatePassword/{id}', [GantiPassword::class, 'update'])->name('update-password');

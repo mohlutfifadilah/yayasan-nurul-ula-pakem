@@ -84,8 +84,15 @@
             <!-- Nav Item - Role -->
             <li class="nav-item {{ Request::segment(1) === 'role' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('role.index') }}">
-                    <i class="fas fa-fw fa-user-times"></i>
+                    <i class="fas fa-fw fa-user-tag"></i>
                     <span>Role</span></a>
+            </li>
+
+            <!-- Nav Item - Jenjang -->
+            <li class="nav-item {{ Request::segment(1) === 'jenjang' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('jenjang.index') }}">
+                    <i class="fas fa-fw fa-stream"></i>
+                    <span>Jenjang</span></a>
             </li>
 
              {{-- <!-- Nav Item - Kewarganegaraan -->
