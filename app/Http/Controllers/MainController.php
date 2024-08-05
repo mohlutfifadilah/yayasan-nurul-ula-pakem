@@ -10,6 +10,6 @@ class MainController extends Controller
     //
     public function index(){
         $jenjang = Jenjang::all();
-        return view('main', compact('jenjang'));
+        return view('beranda', compact('jenjang'));
     }
 }
