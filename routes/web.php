@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GantiPassword;
 use App\Http\Controllers\JenjangController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
@@ -22,9 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 // Admin
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', [MainController::class, 'index']);
 
 # Admin
 Route::get('/dashboard',  [DashboardController::class, 'index']);

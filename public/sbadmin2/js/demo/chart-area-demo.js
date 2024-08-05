@@ -60,7 +60,7 @@ var myLineChart = new Chart(ctx, {
                         stepSize: 10,
                         // Include a dollar sign in the ticks
                         callback: function (value, index, values) {
-                            return value.toFixed(0)
+                            return value.toFixed(0);
                         },
                     },
                     gridLines: {
@@ -94,9 +94,7 @@ var myLineChart = new Chart(ctx, {
                 label: function (tooltipItem, chart) {
                     var datasetLabel =
                         chart.datasets[tooltipItem.datasetIndex].label || "";
-                    return (
-                        datasetLabel + " : " + tooltipItem.yLabel
-                    );
+                    return datasetLabel + " : " + tooltipItem.yLabel;
                 },
             },
         },
