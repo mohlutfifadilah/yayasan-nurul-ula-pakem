@@ -75,22 +75,46 @@
             </div>
         </div>
         <div id="adventage" class="bg-warning my-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 text-center">
-                        <p class="fs-3">
-                            50
-                        </p>
+            <div class="container" style="padding: 0 50px;">
+                <div class="row justify-content-md-center" style="padding: 0 80px; margin: 0;">
+                    <div class="col-md-4">
+                        <div class="row my-4">
+                            <div class="col-md-4 text-center">
+                                <i class="text-success bi bi-person-standing" style="font-size: 48px;"></i>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="text-success" style="font-size: 48px;">
+                                    250+
+                                </p>
+                                <p class="fs-6"><b>Murid</b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quaerat atque labore cupiditate minus rem ipsum necessitatibus ea eveniet perferendis assumenda ratione modi quas, adipisci debitis quia. Animi, cum veritatis.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <p class="fs-3">
-                            50
-                        </p>
+                    <div class="col-md-4">
+                        <div class="row my-4">
+                            <div class="col-md-4 text-center">
+                                <i class="text-success bi bi-person-workspace" style="font-size: 48px;"></i>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="text-success" style="font-size: 48px;">
+                                    18
+                                </p>
+                                <p class="fs-6"><b>Guru</b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quaerat atque labore cupiditate minus rem ipsum necessitatibus ea eveniet perferendis assumenda ratione modi quas, adipisci debitis quia. Animi, cum veritatis.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <p class="fs-3">
-                            50
-                        </p>
+                    <div class="col-md-4">
+                        <div class="row my-4">
+                            <div class="col-md-4 text-center">
+                                <i class="text-success bi bi-person-raised-hand" style="font-size: 48px;"></i>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="text-success" style="font-size: 48px;">
+                                    390+
+                                </p>
+                                <p class="fs-6"><b>Kegiatan</b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quaerat atque labore cupiditate minus rem ipsum necessitatibus ea eveniet perferendis assumenda ratione modi quas, adipisci debitis quia. Animi, cum veritatis.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
