@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
@@ -54,6 +55,34 @@
         display: block;
         opacity: 1;
       }
+
+        .social-icons a {
+        display: inline-block;
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        width: 30px;
+        height: 30px;
+        padding-top: 6px;
+        padding-left: 0.5px;
+        margin: 0 5px;
+        }
+
+        .facebook {
+        background-color: #3b5998;
+        }
+
+        .instagram {
+        background-color: #e1306c;
+        }
+
+        .tiktok {
+        background-color: #2f2e2e;
+        }
+
+        .youtube {
+        background-color: #ff0000;
+        }
     </style>
   </head>
   <body>
