@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeskripsiController;
 use App\Http\Controllers\GantiPassword;
 use App\Http\Controllers\JenjangController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TentangController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +26,11 @@ use Illuminate\Support\Facades\Route;
 // Admin
 
 Route::get('/', [MainController::class, 'index']);
+Route::get('/{jenjang}/deskripsi/{id}', [DeskripsiController::class, 'deskripsi'])->name('deskripsi-index');
+Route::get('/{jenjang}/tenaga-pengajar/{id}', [DeskripsiController::class, 'tenaga'])->name('tenaga-index');
+Route::get('/{jenjang}/struktur/{id}', [DeskripsiController::class, 'struktur'])->name('struktur-index');
+Route::get('/{jenjang}/kegiatan/{id}', [DeskripsiController::class, 'kegiatan'])->name('kegiatan-index');
+Route::get('/tentang', [TentangController::class, 'index']);
 
 # Admin
 Route::get('/dashboard',  [DashboardController::class, 'index']);

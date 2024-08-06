@@ -93,21 +93,23 @@
               <img src="{{ asset('logo.png') }}" width="40" height="40" alt="">
               <span class="fs-4 text-white ms-4">Yayasan Nurul Ula</span>
             </a>
-
+            @php
+                $jenjang2 = \App\Models\Jenjang::all();
+            @endphp
             <ul class="nav nav-underline" style="font-size: 14px;">
-              <li class="nav-item"><a href="#" class="nav-link {{ Request::segment(1) === null ? 'active' : '' }}" aria-current="page">Beranda</a></li>
-              @foreach ($jenjang as $j)
+              <li class="nav-item"><a href="/" class="nav-link {{ Request::segment(1) === null ? 'active' : '' }}" aria-current="page">Beranda</a></li>
+              @foreach ($jenjang2 as $j)
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle {{ Request::segment(1) === $j->nama_jenjang ? 'active' : '' }}" data-bs-toggle="dropdown" role="button" aria-expanded="false">{{ $j->nama_jenjang }}</a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Profil</a></li>
-                    <li><a class="dropdown-item" href="#">Tenaga Pengajar</a></li>
-                    <li><a class="dropdown-item" href="#">Stukrur Organisasi</a></li>
-                    <li><a class="dropdown-item" href="#">Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('deskripsi-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Profil</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tenaga-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Tenaga Pengajar</a></li>
+                    <li><a class="dropdown-item" href="{{ route('struktur-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Stukrur Organisasi</a></li>
+                    <li><a class="dropdown-item" href="{{ route('kegiatan-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Kegiatan</a></li>
                   </ul>
                 </li>
               @endforeach
-              <li class="nav-item"><a href="#" class="nav-link">Tentang</a></li>
+              <li class="nav-item"><a href="/tentang" class="nav-link {{ Request::segment(1) === 'tentang' ? 'active' : '' }}">Tentang</a></li>
             </ul>
           </header>
         </div>

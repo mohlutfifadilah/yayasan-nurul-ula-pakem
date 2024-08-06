@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profil', function (Blueprint $table) {
+        Schema::create('kegiatan', function (Blueprint $table) {
             $table->id();
-            $table->string('id_jenjang');
-            $table->string('id_kegiatan');
-            $table->string('deskripsi')->nullable();
-            $table->string('struktur_organisasi')->nullable();
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profil');
+        Schema::dropIfExists('kegiatan');
     }
 };

@@ -26,22 +26,21 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $role = ['admin-MI', 'admin-PAUD', 'admin-RA'];
+        $role = ['admin-PAUD', 'admin-RA', 'admin-MI'];
 
         $user_roles = [2, 3, 4];
         $user_email = [
-            'adminMI@admin.com',
             'adminPAUD@admin.com',
             'adminRA@admin.com',
+            'adminMI@admin.com',
         ];
         $user_password = [
-            'adminMI02',
-            'adminPAUD03',
-            'adminRA04',
+            'adminPAUD02',
+            'adminRA03',
+            'adminMI04',
         ];
 
-        $jenjang_id = [1, 2, 3];
-        $jenjang_nama = ['MI', 'PAUD', 'RA'];
+        $jenjang_nama = ['PAUD', 'RA', 'MI'];
 
         // SUPERADMIN
         User::create([
