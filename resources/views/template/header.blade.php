@@ -103,10 +103,10 @@
                   <a class="nav-link dropdown-toggle {{ Request::segment(1) === $p->nama ? 'active' : '' }}" data-bs-toggle="dropdown" role="button" aria-expanded="false">{{ $p->nama }}</a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('deskripsi-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Profil</a></li>
-                    <li><a class="dropdown-item" href="{{ route('tenaga-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Tenaga Pengajar</a></li>
+                    {{-- <li><a class="dropdown-item" href="{{ route('tenaga-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Tenaga Pengajar</a></li>
                     <li><a class="dropdown-item" href="{{ route('struktur-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Stukrur Organisasi</a></li>
                     <li><a class="dropdown-item" href="{{ route('kegiatan-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="{{ route('artikel-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Berita</a></li>
+                    <li><a class="dropdown-item" href="{{ route('artikel-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Berita</a></li> --}}
                   </ul>
                 </li>
               @endforeach
