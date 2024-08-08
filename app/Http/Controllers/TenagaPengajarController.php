@@ -95,7 +95,7 @@ class TenagaPengajarController extends Controller
         }
 
         Pegawai::create([
-            'id_profil' => $request->jenjang,
+            'id_profil' => $profil->id,
             'foto' => $image,
             'nama_lengkap' => $request->nama_lengkap,
             'jabatan' => $request->jabatan,

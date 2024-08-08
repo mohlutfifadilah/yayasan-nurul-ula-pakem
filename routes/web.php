@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeskripsiController;
@@ -67,13 +67,13 @@ Route::get('/{jenjang}/kegiatan/edit/{profil}/{id}', [KegiatanController::class,
 Route::put('/{jenjang}/kegiatan/update/{profil}/{id}', [KegiatanController::class, 'update'])->name('kegiatan-update');
 Route::delete('/{jenjang}/kegiatan/destroy/{profil}/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan-destroy');
 
-// berita
-Route::get('/{jenjang}/berita/{id}', [BeritaController::class, 'index'])->name('berita-index');
-Route::get('/{jenjang}/berita/create/{id}', [BeritaController::class, 'create'])->name('berita-create');
-Route::post('/{jenjang}/berita/store/{id}', [BeritaController::class, 'store'])->name('berita-store');
-Route::get('/{jenjang}/berita/edit/{profil}/{id}', [BeritaController::class, 'edit'])->name('berita-edit');
-Route::put('/{jenjang}/berita/update/{profil}/{id}', [BeritaController::class, 'update'])->name('berita-update');
-Route::delete('/{jenjang}/berita/destroy/{profil}/{id}', [BeritaController::class, 'destroy'])->name('berita-destroy');
+// artikel
+Route::get('/{jenjang}/artikel/{id}', [ArtikelController::class, 'index'])->name('artikel-index');
+Route::get('/{jenjang}/artikel/create/{id}', [ArtikelController::class, 'create'])->name('artikel-create');
+Route::post('/{jenjang}/artikel/store/{id}', [ArtikelController::class, 'store'])->name('artikel-store');
+Route::get('/{jenjang}/artikel/edit/{profil}/{id}', [ArtikelController::class, 'edit'])->name('artikel-edit');
+Route::put('/{jenjang}/artikel/update/{profil}/{id}', [ArtikelController::class, 'update'])->name('artikel-update');
+Route::delete('/{jenjang}/artikel/destroy/{profil}/{id}', [ArtikelController::class, 'destroy'])->name('artikel-destroy');
 
 Route::get('/gantiPassword/{id}', [GantiPassword::class, 'change'])->name('change');
 Route::put('/updatePassword/{id}', [GantiPassword::class, 'update'])->name('update-password');
