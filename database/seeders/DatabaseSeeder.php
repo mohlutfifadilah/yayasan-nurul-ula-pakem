@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             'adminRA@admin.com',
             'adminMI@admin.com',
         ];
+        $user_profil = [1, 2, 3];
         $user_password = [
             'adminPAUD02',
             'adminRA03',
@@ -46,6 +47,7 @@ class DatabaseSeeder extends Seeder
         // SUPERADMIN
         User::create([
             'id_role' => 1,
+            'id_profil' => null,
             'foto' => null,
             'email' => 'superadmin@admin.com',
             'password' => Hash::make('superadmin01'),
@@ -69,6 +71,7 @@ class DatabaseSeeder extends Seeder
         foreach($user_roles as $index => $user_role){
             User::create([
                 'id_role' => $user_role,
+                'id_profil' => $user_profil[$index],
                 'foto' => null,
                 'email' => $user_email[$index],
                 'password' => Hash::make($user_password[$index]),

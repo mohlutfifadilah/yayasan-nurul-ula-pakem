@@ -70,67 +70,90 @@
                     <span>Dashboard</span></a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            @if (Auth::user()->id_role === '1')
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Data
-            </div>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Data
+                </div>
 
-            <!-- Nav Item - User -->
-            <li class="nav-item {{ Request::segment(1) === 'users' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('users.index') }}">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>User</span></a>
-            </li>
+                <!-- Nav Item - User -->
+                <li class="nav-item {{ Request::segment(1) === 'users' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span>User</span></a>
+                </li>
 
-            <!-- Nav Item - Role -->
-            <li class="nav-item {{ Request::segment(1) === 'role' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('role.index') }}">
-                    <i class="fas fa-fw fa-user-tag"></i>
-                    <span>Role</span></a>
-            </li>
+                <!-- Nav Item - Role -->
+                <li class="nav-item {{ Request::segment(1) === 'role' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('role.index') }}">
+                        <i class="fas fa-fw fa-user-tag"></i>
+                        <span>Role</span></a>
+                </li>
 
-            <!-- Nav Item - Jenjang -->
-            <li class="nav-item {{ Request::segment(1) === 'jenjang' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('jenjang.index') }}">
-                    <i class="fas fa-fw fa-stream"></i>
-                    <span>Jenjang</span></a>
-            </li>
+                <!-- Nav Item - Jenjang -->
+                <li class="nav-item {{ Request::segment(1) === 'jenjang' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('jenjang.index') }}">
+                        <i class="fas fa-fw fa-stream"></i>
+                        <span>Jenjang</span></a>
+                </li>
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             @php
-                $profil = \App\Models\Profil::all();
+                $profil_admin = \App\Models\Profil::all();
+                $profil = \App\Models\Profil::where('id', Auth::user()->id_profil)->first();
             @endphp
 
             <!-- Heading -->
             <div class="sidebar-heading">
                 Profil
             </div>
-
-            @foreach ($profil as $p)
+            @if (Auth::user()->id_role === '1')
+                @foreach ($profil_admin as $p)
+                    <!-- Nav Item - Utilities Collapse Menu -->
+                    <li class="nav-item {{ Request::segment(1) === $p->nama ? 'active' : '' }}">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $p->nama }}"
+                            aria-expanded="true" aria-controls="{{ $p->nama }}">
+                            <i class="fas fa-fw fa-school"></i>
+                            <span>{{ $p->nama }}</span>
+                        </a>
+                        <div id="{{ $p->nama }}" class="collapse" aria-labelledby="headingUtilities"
+                            data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <h6 class="collapse-header">Data {{ $p->nama }} :</h6>
+                                <a class="collapse-item" href="{{ route('profil-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Profil</a>
+                                <a class="collapse-item" href="{{ route('tenagapengajar-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Tenaga Pengajar</a>
+                                <a class="collapse-item" href="{{ route('kegiatan-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Kegiatan</a>
+                                <a class="collapse-item" href="{{ route('artikel-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Artikel</a>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+            @else
                 <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item {{ Request::segment(1) === $p->nama ? 'active' : '' }}">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $p->nama }}"
-                        aria-expanded="true" aria-controls="{{ $p->nama }}">
+                <li class="nav-item {{ Request::segment(1) === $profil->nama ? 'active' : '' }}">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $profil->nama }}"
+                        aria-expanded="true" aria-controls="{{ $profil->nama }}">
                         <i class="fas fa-fw fa-school"></i>
-                        <span>{{ $p->nama }}</span>
+                        <span>{{ $profil->nama }}</span>
                     </a>
-                    <div id="{{ $p->nama }}" class="collapse" aria-labelledby="headingUtilities"
+                    <div id="{{ $profil->nama }}" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Data {{ $p->nama }} :</h6>
-                            <a class="collapse-item" href="{{ route('profil-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Profil</a>
-                            <a class="collapse-item" href="{{ route('tenagapengajar-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Tenaga Pengajar</a>
-                            <a class="collapse-item" href="{{ route('kegiatan-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Kegiatan</a>
-                            <a class="collapse-item" href="{{ route('artikel-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Artikel</a>
+                            <h6 class="collapse-header">Data {{ $profil->nama }} :</h6>
+                            <a class="collapse-item" href="{{ route('profil-index', ['id' => $profil->id, 'jenjang' => $profil->nama]) }}">Profil</a>
+                            <a class="collapse-item" href="{{ route('tenagapengajar-index', ['id' => $profil->id, 'jenjang' => $profil->nama]) }}">Tenaga Pengajar</a>
+                            <a class="collapse-item" href="{{ route('kegiatan-index', ['id' => $profil->id, 'jenjang' => $profil->nama]) }}">Kegiatan</a>
+                            <a class="collapse-item" href="{{ route('artikel-index', ['id' => $profil->id, 'jenjang' => $profil->nama]) }}">Artikel</a>
                         </div>
                     </div>
                 </li>
-            @endforeach
+            @endif
                 {{-- <!-- Nav Item - Jenjang -->
                 <li class="nav-item {{ Request::segment(1) === $j->nama_jenjang ? 'active' : '' }}">
                     <a href="" class="nav-link collapsed"></a>
@@ -141,7 +164,7 @@
                 </li> --}}
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            {{-- <hr class="sidebar-divider"> --}}
 
             {{-- <!-- Heading -->
             <div class="sidebar-heading">
@@ -170,7 +193,7 @@
             </li> --}}
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            {{-- <hr class="sidebar-divider d-none d-md-block"> --}}
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
