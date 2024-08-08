@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artikel;
 use App\Models\Jenjang;
 use App\Models\Kegiatan;
 use App\Models\Pegawai;
@@ -65,6 +66,21 @@ class DeskripsiController extends Controller
             return view('ra.kegiatan', compact('profil', 'jenjang', 'kegiatan'));
         } else {
             return view('mi.kegiatan', compact('profil', 'jenjang', 'kegiatan'));
+        }
+    }
+
+    public function artikel($jenjang, $id)
+    {
+        //
+        $profil = Profil::where('id_jenjang', $id)->first();
+        $jenjang = Jenjang::find($id);
+        $artikel = Artikel::where('id_jenjang', $profil->id_jenjang);
+        if($id === '1'){
+            return view('paud.artikel', compact('profil', 'jenjang', 'artikel'));
+        } else if($id === '2'){
+            return view('ra.artikel', compact('profil', 'jenjang', 'artikel'));
+        } else {
+            return view('mi.artikel', compact('profil', 'jenjang', 'artikel'));
         }
     }
 }

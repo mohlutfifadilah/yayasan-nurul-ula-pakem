@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Jenjang;
+use App\Models\Profil;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -40,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'adminMI04',
         ];
 
-        $jenjang_nama = ['PAUD', 'RA', 'MI'];
+        $profil_nama = ['PAUD', 'RA', 'MI'];
 
         // SUPERADMIN
         User::create([
@@ -76,9 +77,9 @@ class DatabaseSeeder extends Seeder
 
         // Jenjang
 
-        foreach($jenjang_nama as $j){
-            Jenjang::create([
-                'nama_jenjang' => $j,
+        foreach($profil_nama as $p){
+            Profil::create([
+                'nama' => $p,
             ]);
         }
     }

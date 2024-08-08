@@ -106,6 +106,7 @@
                     <li><a class="dropdown-item" href="{{ route('tenaga-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Tenaga Pengajar</a></li>
                     <li><a class="dropdown-item" href="{{ route('struktur-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Stukrur Organisasi</a></li>
                     <li><a class="dropdown-item" href="{{ route('kegiatan-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('artikel-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Berita</a></li>
                   </ul>
                 </li>
               @endforeach

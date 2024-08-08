@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeskripsiController;
 use App\Http\Controllers\GantiPassword;
@@ -30,14 +31,20 @@ Route::get('/{jenjang}/deskripsi/{id}', [DeskripsiController::class, 'deskripsi'
 Route::get('/{jenjang}/tenaga-pengajar/{id}', [DeskripsiController::class, 'tenaga'])->name('tenaga-index');
 Route::get('/{jenjang}/struktur/{id}', [DeskripsiController::class, 'struktur'])->name('struktur-index');
 Route::get('/{jenjang}/kegiatan/{id}', [DeskripsiController::class, 'kegiatan'])->name('kegiatan-index');
+Route::get('/{jenjang}/artikel/{id}', [DeskripsiController::class, 'artikel'])->name('artikel-index');
 Route::get('/tentang', [TentangController::class, 'index']);
 
 # Admin
 Route::get('/dashboard',  [DashboardController::class, 'index']);
-Route::resource('profil', ProfilController::class);
+Route::resource('biodata', BiodataController::class);
 Route::resource('users', UsersController::class);
 Route::resource('role', RoleController::class);
 Route::resource('jenjang', JenjangController::class);
+
+// Route::resource('profil', ProfilController::class);
+Route::get('/profil/{id}', [ProfilController::class, 'index'])->name('profil-index');
+Route::get('/profil/edit/{id}', [ProfilController::class, 'edit'])->name('profil-edit');
+Route::put('/profil/update/{id}', [ProfilController::class, 'update'])->name('profil-update');
 
 Route::get('/gantiPassword/{id}', [GantiPassword::class, 'change'])->name('change');
 Route::put('/updatePassword/{id}', [GantiPassword::class, 'update'])->name('update-password');

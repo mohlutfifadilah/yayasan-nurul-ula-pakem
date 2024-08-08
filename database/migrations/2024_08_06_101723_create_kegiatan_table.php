@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('kegiatan', function (Blueprint $table) {
             $table->id();
+            $table->string('id_profil');
             $table->string('foto')->nullable();
             $table->timestamps();
         });

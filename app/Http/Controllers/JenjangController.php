@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jenjang;
+use App\Models\Profil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -17,8 +17,8 @@ class JenjangController extends Controller
     public function index()
     {
         //
-        $jenjang = Jenjang::all();
-        return view('admin.jenjang.index', compact('jenjang'));
+        $profil = Profil::all();
+        return view('admin.jenjang.index', compact('profil'));
     }
 
     /**
@@ -62,12 +62,12 @@ class JenjangController extends Controller
                 ->withInput()->with(['status' => 'Terjadi Kesalahan', 'title' => 'Tambah Jenjang', 'type' => 'error']);
         }
 
-        if (Jenjang::where('nama_jenjang', $request->jenjang)->exists()) {
-            return redirect()->back()->withInput()->with('jenjang', 'Jenjang sudah digunakan');
+        if (Profil::where('nama', $request->jenjang)->exists()) {
+            return redirect()->back()->withInput()->with('jenjang', 'Jenjang sudah ada');
         }
 
-        Jenjang::create([
-            'nama_jenjang' => $request->jenjang,
+        Profil::create([
+            'nama' => $request->jenjang,
         ]);
 
         Alert::alert('Berhasil', 'Jenjang berhasil ditambahkan ', 'success');
@@ -94,9 +94,9 @@ class JenjangController extends Controller
     public function edit($id)
     {
         //
-        $jenjang = Jenjang::find($id);
+        $profil = Profil::find($id);
 
-        return view('admin.jenjang.jenjang_edit', compact('jenjang'));
+        return view('admin.jenjang.jenjang_edit', compact('profil'));
     }
 
     /**
@@ -109,7 +109,7 @@ class JenjangController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $jenjang = Jenjang::find($id);
+        $profil = Profil::find($id);
 
         $validator = Validator::make($request->all(), [
             'jenjang' => 'required',
@@ -133,15 +133,15 @@ class JenjangController extends Controller
         }
 
         // Cek apakah embed HTML sudah ada di tabel desa
-        if($request->jenjang != $jenjang->nama_jenjang){
-            if (Jenjang::where('nama_jenjang', $request->jenjang)->exists()) {
+        if($request->jenjang != $profil->nama){
+            if (Profil::where('nama', $request->jenjang)->exists()) {
                 Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
                 return redirect()->back()->withInput()->with('jenjang', 'Jenjang sudah digunakan!');
             }
         }
 
-        $jenjang->update([
-            'nama_jenjang' => $request->jenjang,
+        $profil->update([
+            'nama' => $request->jenjang,
         ]);
 
         Alert::alert('Berhasil', 'Jenjang berhasil diedit ', 'success');
@@ -157,8 +157,8 @@ class JenjangController extends Controller
     public function destroy($id)
     {
         //
-        $jenjang = Jenjang::find($id);
-        $jenjang->delete();
+        $profil = Profil::find($id);
+        $profil->delete();
 
         Alert::alert('Berhasil', 'Jenjang berhasil dihapus ', 'success');
         return redirect()->route('jenjang.index')->withSuccess('Data Jenjang berhasil dihapus');

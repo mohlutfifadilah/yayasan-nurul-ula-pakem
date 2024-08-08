@@ -10,12 +10,12 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <form action="{{ route('jenjang.update', $jenjang->id) }} " method="POST">
+                                    <form action="{{ route('jenjang.update', $profil->id) }} " method="POST">
                                         @csrf
                                         @method('PUT')
                                         <div class="form-group">
                                             <label for="jenjang">Nama Jenjang</label>
-                                            <input type="text" class="form-control @if(session('jenjang')) is-invalid @endif @error('jenjang') is-invalid @enderror" id="jenjang" placeholder="Nama Jenjang" name="jenjang" aria-describedby="jenjang" value="{{ $jenjang->nama_jenjang }}">
+                                            <input type="text" class="form-control @if(session('jenjang')) is-invalid @endif @error('jenjang') is-invalid @enderror" id="jenjang" placeholder="Nama Jenjang" name="jenjang" aria-describedby="jenjang" value="{{ $profil->nama }}">
                                             @error('jenjang')
                                                 <small id="jenjang" class="text-danger">
                                                     {{ $message }}

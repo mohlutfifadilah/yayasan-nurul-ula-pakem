@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jenjang;
+use App\Models\Profil;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,11 +18,11 @@ class ProfilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         //
-        $user = User::find(Auth::user()->id);
-        return view('admin.profil', compact('user'));
+        $profil = Profil::find($id);
+        return view('admin.profil.index', compact('profil'));
     }
 
     /**
@@ -65,10 +66,8 @@ class ProfilController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
-        $role = Role::all();
-        $jenjang = Jenjang::all();
-        return view('admin.profil-edit', compact('user', 'role', 'jenjang'));
+        $profil = Profil::find($id);
+        return view('admin.profil.profil_edit', compact('profil'));
     }
 
     /**
@@ -81,77 +80,61 @@ class ProfilController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $user = User::find($id);
+        $profil = Profil::find($id);
 
         $validator = Validator::make($request->all(), [
-            'foto' => 'mimes:jpeg,png,jpg|max:2048',
-            'role' => 'required',
-            'email' => 'required',
+            'struktur' => 'mimes:jpeg,png,jpg|max:2048',
+            'jenjang' => 'required',
         ],
         [
-            'foto.mimes' => 'Format Foto tidak valid',
-            'foto.max' => 'Foto maksimal 2 mb',
-            'role.required' => 'Role harus diisi',
-            'email.required' => 'Email harus diisi',
+            'struktur.mimes' => 'Format tidak valid',
+            'struktur.max' => 'maksimal 2 mb',
+            'jenjang.required' => 'Jenjang harus diisi',
         ]);
 
         if ($validator->fails()) {
             Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-            return redirect()->route('profil.edit', $id)->withErrors($validator)
-                ->withInput()->with(['status' => 'Terjadi Kesalahan', 'title' => 'Edit Profil', 'type' => 'error']);
-        }
-
-        if($user->id_jenjang){
-            if (is_null($request->jenjang)) {
-                Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-                return redirect()->route('profil.edit', $id)->with('jenjang', 'Jenjang harus diisi');
-            }
-        }
-
-        // Validasi apakah input email valid
-        if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-            return redirect()->route('profil.edit', $id)->with('email', 'Format Email tidak valid');
+            return redirect()->route('profil-edit', $id)->withErrors($validator)
+            ->withInput()->with(['status' => 'Terjadi Kesalahan', 'title' => 'Edit Profil', 'type' => 'error']);
         }
 
         // Cek apakah embed HTML sudah ada di tabel desa
-        if($request->email != $user->email){
-            if (User::where('email', $request->email)->exists()) {
+        if($request->jenjang != $profil->nama){
+            if (Profil::where('nama', $request->jenjang)->exists()) {
                 Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-                return redirect()->back()->withInput()->with('email', 'Email sudah digunakan!');
+                return redirect()->back()->withInput()->with('jenjang', 'Jenjang sudah digunakan!');
             }
         }
 
-        if ($request->file('foto')) {
+        if ($request->file('struktur')) {
             // Ambil ukuran file dalam bytes
-            $fileSize = $request->file('foto')->getSize();
+            $fileSize = $request->file('struktur')->getSize();
 
             // Periksa apakah ukuran file melebihi batas maksimum (2 MB)
             if ($fileSize > 2 * 1024 * 1024) {
                 // File terlalu besar, kembalikan respons dengan pesan kesalahan
-                return redirect()->back()->with('foto', 'Ukuran file maksimal 2 mb');
+                return redirect()->back()->with('struktur', 'Ukuran file maksimal 2 mb');
             }
-            $file = $request->file('foto');
-            $image = $request->file('foto')->store('foto-profil');
-            $file->move('storage/foto-profil/', $image);
-            $image = str_replace('foto-profil/', '', $image);
-            if($user->foto){
-                unlink(storage_path('app/foto-profil/' . $user->foto));
-                unlink(public_path('storage/foto-profil/' . $user->foto));
+            $file = $request->file('struktur');
+            $image = $request->file('struktur')->store('struktur-organisasi');
+            $file->move('storage/struktur-organisasi/', $image);
+            $image = str_replace('struktur-organisasi/', '', $image);
+            if($profil->struktur_organisasi){
+                unlink(storage_path('app/struktur-organisasi/' . $profil->struktur_organisasi));
+                unlink(public_path('storage/struktur-organisasi/' . $profil->struktur_organisasi));
             }
         } else {
-            $image = $user->foto;
+            $image = $profil->struktur_organisasi;
         }
 
-        $user->update([
-            'id_role' => $request->role,
-            'id_jenjang' => $request->jenjang,
-            'foto' => $image,
-            'email' => $request->email,
+        $profil->update([
+            'nama' => $request->jenjang,
+            'deskripsi' => $request->deskripsi,
+            'struktur_organisasi' => $image,
         ]);
 
         Alert::alert('Berhasil', 'Profil berhasil diedit ', 'success');
-        return redirect()->route('profil.index')->withSuccess('Profil berhasil diedit');
+        return redirect()->route('profil-index', $profil->id)->withSuccess('Profil berhasil diedit');
     }
 
     /**

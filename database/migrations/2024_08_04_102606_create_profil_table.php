@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('profil', function (Blueprint $table) {
             $table->id();
-            $table->string('id_jenjang');
-            $table->string('id_kegiatan');
-            $table->string('deskripsi')->nullable();
+            $table->string('nama');
+            $table->longText('deskripsi')->nullable();
             $table->string('struktur_organisasi')->nullable();
             $table->timestamps();
         });

@@ -37,6 +37,10 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Summernote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -99,27 +103,27 @@
             <hr class="sidebar-divider">
 
             @php
-                $jenjang = \App\Models\Jenjang::all();
+                $profil = \App\Models\Profil::all();
             @endphp
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Jenjang
+                Profil
             </div>
 
-            @foreach ($jenjang as $j)
+            @foreach ($profil as $p)
                 <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item {{ Request::segment(1) === $j->nama_jenjang ? 'active' : '' }}">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $j->nama_jenjang }}"
-                        aria-expanded="true" aria-controls="{{ $j->nama_jenjang }}">
+                <li class="nav-item {{ Request::segment(1) === $p->nama ? 'active' : '' }}">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#{{ $p->nama }}"
+                        aria-expanded="true" aria-controls="{{ $p->nama }}">
                         <i class="fas fa-fw fa-school"></i>
-                        <span>{{ $j->nama_jenjang }}</span>
+                        <span>{{ $p->nama }}</span>
                     </a>
-                    <div id="{{ $j->nama_jenjang }}" class="collapse" aria-labelledby="headingUtilities"
+                    <div id="{{ $p->nama }}" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Data {{ $j->nama_jenjang }} :</h6>
-                            <a class="collapse-item" href="utilities-color.html">Pegawai</a>
+                            <h6 class="collapse-header">Data {{ $p->nama }} :</h6>
+                            <a class="collapse-item" href="{{ route('profil-index', $p->id) }}">Profil</a>
                             <a class="collapse-item" href="utilities-border.html">Profil</a>
                         </div>
                     </div>
