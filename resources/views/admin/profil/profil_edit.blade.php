@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form action="{{ route('profil-update', $profil->id) }} " method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('profil-update', ['id' => $profil->id, 'jenjang' => $profil->nama]) }} " method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="form-group">
@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="d-flex mb-3 mt-5 justify-content-end">
                                             <button type="submit" class="btn btn-md mr-5 btn-warning text-white"><i class="fas fa-edit"></i></i> Edit</button>
-                                            <a href="{{ route('profil-index', $profil->id) }}" class="btn btn-md btn-info text-white"><i class="fas fa-arrow-alt-circle-left"></i></i> Kembali</a>
+                                            <a href="{{ route('profil-index', ['id' => $profil->id, 'jenjang' => $profil->nama]) }}" class="btn btn-md btn-info text-white"><i class="fas fa-arrow-alt-circle-left"></i></i> Kembali</a>
                                         </div>
                                     </form>
                                 </div>

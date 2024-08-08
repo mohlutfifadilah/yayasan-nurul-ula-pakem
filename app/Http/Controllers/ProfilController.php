@@ -18,9 +18,10 @@ class ProfilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($jenjang, $id)
     {
         //
+
         $profil = Profil::find($id);
         return view('admin.profil.index', compact('profil'));
     }
@@ -63,7 +64,7 @@ class ProfilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($jenjang, $id)
     {
         //
         $profil = Profil::find($id);
@@ -77,11 +78,10 @@ class ProfilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $jenjang, $id)
     {
         //
         $profil = Profil::find($id);
-
         $validator = Validator::make($request->all(), [
             'struktur' => 'mimes:jpeg,png,jpg|max:2048',
             'jenjang' => 'required',
@@ -94,7 +94,7 @@ class ProfilController extends Controller
 
         if ($validator->fails()) {
             Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-            return redirect()->route('profil-edit', $id)->withErrors($validator)
+            return redirect()->route('profil-edit', ['jenjang' => $profil->nama, 'id' => $profil->id])->withErrors($validator)
             ->withInput()->with(['status' => 'Terjadi Kesalahan', 'title' => 'Edit Profil', 'type' => 'error']);
         }
 
@@ -134,7 +134,7 @@ class ProfilController extends Controller
         ]);
 
         Alert::alert('Berhasil', 'Profil berhasil diedit ', 'success');
-        return redirect()->route('profil-index', $profil->id)->withSuccess('Profil berhasil diedit');
+        return redirect()->route('profil-index', ['jenjang' => $profil->nama, 'id' => $profil->id])->withSuccess('Profil berhasil diedit');
     }
 
     /**

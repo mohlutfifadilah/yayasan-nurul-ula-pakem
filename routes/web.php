@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TenagaPengajarController;
 use App\Http\Controllers\TentangController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Admin
+// MAIN PAGE
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/{jenjang}/deskripsi/{id}', [DeskripsiController::class, 'deskripsi'])->name('deskripsi-index');
@@ -41,10 +42,18 @@ Route::resource('users', UsersController::class);
 Route::resource('role', RoleController::class);
 Route::resource('jenjang', JenjangController::class);
 
-// Route::resource('profil', ProfilController::class);
-Route::get('/profil/{id}', [ProfilController::class, 'index'])->name('profil-index');
-Route::get('/profil/edit/{id}', [ProfilController::class, 'edit'])->name('profil-edit');
-Route::put('/profil/update/{id}', [ProfilController::class, 'update'])->name('profil-update');
+// profil
+Route::get('/{jenjang}/profil/{id}', [ProfilController::class, 'index'])->name('profil-index');
+Route::get('/{jenjang}/profil/edit/{id}', [ProfilController::class, 'edit'])->name('profil-edit');
+Route::put('/{jenjang}/profil/update/{id}', [ProfilController::class, 'update'])->name('profil-update');
+
+// tenaga-pengajar
+Route::get('/{jenjang}/tenaga-pengajar/{id}', [TenagaPengajarController::class, 'index'])->name('tenagapengajar-index');
+Route::get('/{jenjang}/tenaga-pengajar/create/{id}', [TenagaPengajarController::class, 'create'])->name('tenagapengajar-create');
+Route::post('/{jenjang}/tenaga-pengajar/store/{id}', [TenagaPengajarController::class, 'store'])->name('tenagapengajar-store');
+Route::get('/{jenjang}/tenaga-pengajar/edit/{profil}/{id}', [TenagaPengajarController::class, 'edit'])->name('tenagapengajar-edit');
+Route::put('/{jenjang}/tenaga-pengajar/update/{profil}/{id}', [TenagaPengajarController::class, 'update'])->name('tenagapengajar-update');
+Route::delete('/{jenjang}/tenaga-pengajar/destroy/{profil}/{id}', [TenagaPengajarController::class, 'destroy'])->name('tenagapengajar-destroy');
 
 Route::get('/gantiPassword/{id}', [GantiPassword::class, 'change'])->name('change');
 Route::put('/updatePassword/{id}', [GantiPassword::class, 'update'])->name('update-password');

@@ -123,8 +123,8 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Data {{ $p->nama }} :</h6>
-                            <a class="collapse-item" href="{{ route('profil-index', $p->id) }}">Profil</a>
-                            <a class="collapse-item" href="utilities-border.html">Profil</a>
+                            <a class="collapse-item" href="{{ route('profil-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Profil</a>
+                            <a class="collapse-item" href="{{ route('tenagapengajar-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Tenaga Pengajar</a>
                         </div>
                     </div>
                 </li>
