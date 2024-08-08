@@ -125,6 +125,8 @@
                             <h6 class="collapse-header">Data {{ $p->nama }} :</h6>
                             <a class="collapse-item" href="{{ route('profil-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Profil</a>
                             <a class="collapse-item" href="{{ route('tenagapengajar-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Tenaga Pengajar</a>
+                            <a class="collapse-item" href="{{ route('kegiatan-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Kegiatan</a>
+                            <a class="collapse-item" href="{{ route('berita-index', ['id' => $p->id, 'jenjang' => $p->nama]) }}">Berita</a>
                         </div>
                     </div>
                 </li>

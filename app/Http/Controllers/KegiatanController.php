@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pegawai;
+use App\Models\Kegiatan;
 use App\Models\Profil;
-use App\Models\Tenaga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class TenagaPengajarController extends Controller
+class KegiatanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +19,8 @@ class TenagaPengajarController extends Controller
     {
         //
         $profil = Profil::find($id);
-        $tenaga = Tenaga::where('id_profil', $id)->get();
-        return view('admin.tenaga-pengajar.index', compact('tenaga', 'profil'));
+        $kegiatan = Kegiatan::where('id_profil', $id)->get();
+        return view('admin.kegiatan.index', compact('profil', 'kegiatan'));
     }
 
     /**
@@ -33,8 +32,7 @@ class TenagaPengajarController extends Controller
     {
         //
         $profil = Profil::find($id);
-        $jenjang = Profil::all();
-        return view('admin.tenaga-pengajar.tenaga-pengajar_add', compact('profil', 'jenjang'));
+        return view('admin.kegiatan.kegiatan_add', compact('profil'));
     }
 
     /**
@@ -48,20 +46,17 @@ class TenagaPengajarController extends Controller
         //
         $profil = Profil::find($id);
         $validator = Validator::make($request->all(), [
-            'foto' => 'mimes:jpeg,png,jpg|max:2048',
-            'nama_lengkap' => 'required',
-            'jabatan' => 'required',
+            'foto' => 'required|mimes:jpeg,png,jpg|max:2048',
         ],
         [
+            'foto.required' => 'Foto harus diisi',
             'foto.mimes' => 'Format Foto tidak valid',
             'foto.max' => 'Foto maksimal 2 mb',
-            'nama_lengkap.required' => 'Nama Lengkap harus diisi',
-            'jabatan.required' => 'Jabatan harus diisi',
         ]);
 
         if ($validator->fails()) {
             Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-            return redirect()->route('tenagapengajar-create', ['jenjang' => $profil->nama, 'id' => $id])->withErrors($validator)
+            return redirect()->route('kegiatan-create', ['jenjang' => $profil->nama, 'id' => $id])->withErrors($validator)
             ->withInput()->with(['status' => 'Terjadi Kesalahan', 'title' => 'Edit Profil', 'type' => 'error']);
         }
 
@@ -83,26 +78,24 @@ class TenagaPengajarController extends Controller
                 return redirect()->back()->with('foto', 'Ukuran file maksimal 2 mb');
             }
             $file = $request->file('foto');
-            $image = $request->file('foto')->store('tenaga-pengajar/' . $profil->nama);
-            $file->move('storage/tenaga-pengajar/' . $profil->nama . '/', $image);
-            $image = str_replace('tenaga-pengajar/' . $profil->nama . '/', '', $image);
+            $image = $request->file('foto')->store('kegiatan/' . $profil->nama);
+            $file->move('storage/kegiatan/' . $profil->nama . '/', $image);
+            $image = str_replace('kegiatan/' . $profil->nama . '/', '', $image);
         //     if($profil->foto){
-        //         unlink(storage_path('app/tenaga-pengajar/' . $profil->nama . '/' . $profil->foto));
-        //         unlink(public_path('storage/tenaga-pengajar/' . $profil->nama . '/' . $profil->foto));
+        //         unlink(storage_path('app/kegiatan/' . $profil->nama . '/' . $profil->foto));
+        //         unlink(public_path('storage/kegiatan/' . $profil->nama . '/' . $profil->foto));
         //     }
         } else {
             $image = null;
         }
 
-        Pegawai::create([
+        Kegiatan::create([
             'id_profil' => $request->jenjang,
             'foto' => $image,
-            'nama_lengkap' => $request->nama_lengkap,
-            'jabatan' => $request->jabatan,
         ]);
 
-        Alert::alert('Berhasil', 'Tenaga Pengajar berhasil ditambah ', 'success');
-        return redirect()->route('tenagapengajar-index', ['id' => $profil->id, 'jenjang' => $profil->nama])->withSuccess('Tenaga Pengajar berhasil ditambah');
+        Alert::alert('Berhasil', 'Kegiatan berhasil ditambah ', 'success');
+        return redirect()->route('kegiatan-index', ['id' => $profil->id, 'jenjang' => $profil->nama])->withSuccess('Kegiatan berhasil ditambah');
     }
 
     /**
@@ -125,9 +118,9 @@ class TenagaPengajarController extends Controller
     public function edit($jenjang, $profil, $id)
     {
         //
-        $tenaga = Pegawai::find($id);
-        $profil = Profil::where('id', $tenaga->id_profil)->first();
-        return view('admin.tenaga-pengajar.tenaga-pengajar_edit', compact('tenaga', 'profil'));
+        $kegiatan = Kegiatan::find($id);
+        $profil = Profil::where('id', $kegiatan->id_profil)->first();
+        return view('admin.kegiatan.kegiatan_edit', compact('kegiatan', 'profil'));
 
     }
 
@@ -141,24 +134,21 @@ class TenagaPengajarController extends Controller
     public function update(Request $request, $jenjang, $profil, $id)
     {
         //
-        $tenaga = Pegawai::find($id);
-        $profil = Profil::where('id', $tenaga->id_profil)->first();
+        $kegiatan = Kegiatan::find($id);
+        $profil = Profil::where('id', $kegiatan->id_profil)->first();
 
         $validator = Validator::make($request->all(), [
-            'foto' => 'mimes:jpeg,png,jpg|max:2048',
-            'nama_lengkap' => 'required',
-            'jabatan' => 'required',
+            'foto' => 'required|mimes:jpeg,png,jpg|max:2048',
         ],
         [
             'foto.mimes' => 'Format Foto tidak valid',
             'foto.max' => 'Foto maksimal 2 mb',
-            'nama_lengkap.required' => 'Nama Lengkap harus diisi',
-            'jabatan.required' => 'Jabatan harus diisi',
+            'foto.required' => 'Foto harus diisi',
         ]);
 
         if ($validator->fails()) {
             Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-            return redirect()->route('tenagapengajar-edit', ['jenjang' => $profil->nama, 'profil' => $profil->id, 'id' => $id])->withErrors($validator)
+            return redirect()->route('kegiatan-edit', ['jenjang' => $profil->nama, 'profil' => $profil->id, 'id' => $id])->withErrors($validator)
             ->withInput()->with(['status' => 'Terjadi Kesalahan', 'title' => 'Edit Profil', 'type' => 'error']);
         }
 
@@ -180,26 +170,24 @@ class TenagaPengajarController extends Controller
                 return redirect()->back()->with('foto', 'Ukuran file maksimal 2 mb');
             }
             $file = $request->file('foto');
-            $image = $request->file('foto')->store('tenaga-pengajar/' . $profil->nama);
-            $file->move('storage/tenaga-pengajar/' . $profil->nama . '/', $image);
-            $image = str_replace('tenaga-pengajar/' . $profil->nama . '/', '', $image);
-            if($tenaga->foto){
-                unlink(storage_path('app/tenaga-pengajar/' . $profil->nama . '/' . $tenaga->foto));
-                unlink(public_path('storage/tenaga-pengajar/' . $profil->nama . '/' . $tenaga->foto));
+            $image = $request->file('foto')->store('kegiatan/' . $profil->nama);
+            $file->move('storage/kegiatan/' . $profil->nama . '/', $image);
+            $image = str_replace('kegiatan/' . $profil->nama . '/', '', $image);
+            if($kegiatan->foto){
+                unlink(storage_path('app/kegiatan/' . $profil->nama . '/' . $kegiatan->foto));
+                unlink(public_path('storage/kegiatan/' . $profil->nama . '/' . $kegiatan->foto));
             }
         } else {
-            $image = $tenaga->foto;
+            $image = $kegiatan->foto;
         }
 
-        $tenaga->update([
+        $kegiatan->update([
             'id_profil' => $profil->id,
             'foto' => $image,
-            'nama_lengkap' => $request->nama_lengkap,
-            'jabatan' => $request->jabatan,
         ]);
 
-        Alert::alert('Berhasil', 'Tenaga Pengajar berhasil diubah ', 'success');
-        return redirect()->route('tenagapengajar-index', ['id' => $profil->id, 'jenjang' => $profil->nama])->withSuccess('Tenaga Pengajar berhasil diubah');
+        Alert::alert('Berhasil', 'Kegiatan berhasil diubah ', 'success');
+        return redirect()->route('kegiatan-index', ['id' => $profil->id, 'jenjang' => $profil->nama])->withSuccess('Kegiatan berhasil diubah');
     }
 
     /**
@@ -211,15 +199,15 @@ class TenagaPengajarController extends Controller
     public function destroy($jenjang, $profil, $id)
     {
         //
-        $tenaga = Pegawai::find($id);
+        $kegiatan = Kegiatan::find($id);
         $profil = Profil::find($profil);
-        if($tenaga->foto){
-            unlink(storage_path('app/tenaga-pengajar/' . $profil->nama . '/' . $tenaga->foto));
-            unlink(public_path('storage/tenaga-pengajar/' . $profil->nama . '/' . $tenaga->foto));
+        if($kegiatan->foto){
+            unlink(storage_path('app/kegiatan/' . $profil->nama . '/' . $kegiatan->foto));
+            unlink(public_path('storage/kegiatan/' . $profil->nama . '/' . $kegiatan->foto));
         }
-        $tenaga->delete();
+        $kegiatan->delete();
 
-        Alert::alert('Berhasil', 'Tenaga Pengajar berhasil dihapus ', 'success');
-        return redirect()->route('tenagapengajar-index', ['id' => $profil->id, 'jenjang' => $profil->nama])->withSuccess('Tenaga Pengajar berhasil dihapus');
+        Alert::alert('Berhasil', 'Kegiatan berhasil dihapus ', 'success');
+        return redirect()->route('kegiatan-index', ['id' => $profil->id, 'jenjang' => $profil->nama])->withSuccess('Kegiatan berhasil dihapus');
     }
 }

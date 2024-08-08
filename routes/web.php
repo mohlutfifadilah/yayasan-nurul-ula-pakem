@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeskripsiController;
 use App\Http\Controllers\GantiPassword;
 use App\Http\Controllers\JenjangController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfilController;
@@ -56,6 +58,22 @@ Route::post('/{jenjang}/tenaga-pengajar/store/{id}', [TenagaPengajarController::
 Route::get('/{jenjang}/tenaga-pengajar/edit/{profil}/{id}', [TenagaPengajarController::class, 'edit'])->name('tenagapengajar-edit');
 Route::put('/{jenjang}/tenaga-pengajar/update/{profil}/{id}', [TenagaPengajarController::class, 'update'])->name('tenagapengajar-update');
 Route::delete('/{jenjang}/tenaga-pengajar/destroy/{profil}/{id}', [TenagaPengajarController::class, 'destroy'])->name('tenagapengajar-destroy');
+
+// kegiatan
+Route::get('/{jenjang}/kegiatan/{id}', [KegiatanController::class, 'index'])->name('kegiatan-index');
+Route::get('/{jenjang}/kegiatan/create/{id}', [KegiatanController::class, 'create'])->name('kegiatan-create');
+Route::post('/{jenjang}/kegiatan/store/{id}', [KegiatanController::class, 'store'])->name('kegiatan-store');
+Route::get('/{jenjang}/kegiatan/edit/{profil}/{id}', [KegiatanController::class, 'edit'])->name('kegiatan-edit');
+Route::put('/{jenjang}/kegiatan/update/{profil}/{id}', [KegiatanController::class, 'update'])->name('kegiatan-update');
+Route::delete('/{jenjang}/kegiatan/destroy/{profil}/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan-destroy');
+
+// berita
+Route::get('/{jenjang}/berita/{id}', [BeritaController::class, 'index'])->name('berita-index');
+Route::get('/{jenjang}/berita/create/{id}', [BeritaController::class, 'create'])->name('berita-create');
+Route::post('/{jenjang}/berita/store/{id}', [BeritaController::class, 'store'])->name('berita-store');
+Route::get('/{jenjang}/berita/edit/{profil}/{id}', [BeritaController::class, 'edit'])->name('berita-edit');
+Route::put('/{jenjang}/berita/update/{profil}/{id}', [BeritaController::class, 'update'])->name('berita-update');
+Route::delete('/{jenjang}/berita/destroy/{profil}/{id}', [BeritaController::class, 'destroy'])->name('berita-destroy');
 
 Route::get('/gantiPassword/{id}', [GantiPassword::class, 'change'])->name('change');
 Route::put('/updatePassword/{id}', [GantiPassword::class, 'update'])->name('update-password');
