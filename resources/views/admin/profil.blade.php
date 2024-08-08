@@ -37,7 +37,7 @@
                                     </dl>
                                     <hr class="mt-5">
                                     <div class="d-flex mb-3">
-                                        <a href="{{ route('profil.edit', $user->id) }}" class="btn btn-sm mr-5 btn-warning text-white"><i class="fas fa-edit"></i></i> Ubah Profil</a>
+                                        <a href="{{ route('profil-user-edit', $user->id) }}" class="btn btn-sm mr-5 btn-warning text-white"><i class="fas fa-edit"></i></i> Ubah Profil</a>
                                         <a href="{{ route('change', $user->id) }}" class="btn btn-sm btn-danger text-white"><i class="fas fa-key"></i></i> Ganti Password</a>
                                     </div>
                                 </div>

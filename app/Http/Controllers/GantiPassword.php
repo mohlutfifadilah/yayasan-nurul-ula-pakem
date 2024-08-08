@@ -53,7 +53,7 @@ class GantiPassword extends Controller
         ]);
 
         Alert::alert('Berhasil', 'Password berhasil diganti ', 'success');
-        return redirect()->route('profil.index')->withSuccess('Password berhasil diganti');
+        return redirect()->route('profil-user-index')->withSuccess('Password berhasil diganti');
 
     }
 }

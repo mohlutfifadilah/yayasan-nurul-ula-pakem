@@ -12,7 +12,6 @@
                                 <div class="col-md-8">
                                     @php
                                         $user_role = \App\Models\Role::find($user->id_role);
-                                        $user_jenjang = \App\Models\Jenjang::find($user->id_jenjang);
                                     @endphp
                                     <form action="{{ route('users.update', $user->id) }} " method="POST">
                                         @csrf

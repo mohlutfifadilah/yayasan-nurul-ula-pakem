@@ -37,7 +37,9 @@ Route::get('/tentang', [TentangController::class, 'index']);
 
 # Admin
 Route::get('/dashboard',  [DashboardController::class, 'index']);
-Route::resource('biodata', BiodataController::class);
+Route::get('/profil-user/{id}', [BiodataController::class, 'index'])->name('profil-user-index');
+Route::get('/profil-user/edit/{id}', [BiodataController::class, 'edit'])->name('profil-user-edit');
+Route::put('/profil-user/update/{id}', [BiodataController::class, 'update'])->name('profil-user-update');
 Route::resource('users', UsersController::class);
 Route::resource('role', RoleController::class);
 Route::resource('jenjang', JenjangController::class);

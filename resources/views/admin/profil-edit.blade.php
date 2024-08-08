@@ -13,7 +13,7 @@
                                 $user_role = \App\Models\Role::find($user->id_role);
                                 // $user_jenjang = \App\Models\Jenjang::find($user->id_jenjang);
                             @endphp
-                            <form action="{{ route('profil.update', $user->id) }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('profil-user-update', $user->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
@@ -103,7 +103,7 @@
                                         <hr class="mt-5">
                                         <div class="d-flex mb-3">
                                             <button type="submit" class="btn btn-sm mr-5 btn-warning text-white"><i class="fas fa-edit"></i></i> Ubah</button>
-                                            <a href="{{ route('profil.index') }}" class="btn btn-sm btn-info text-white"><i class="fas fa-arrow-alt-circle-left"></i></i> Kembali</a>
+                                            <a href="{{ route('profil-user-index', $user->id) }}" class="btn btn-sm btn-info text-white"><i class="fas fa-arrow-alt-circle-left"></i></i> Kembali</a>
                                         </div>
                                     </div>
                                 </div>

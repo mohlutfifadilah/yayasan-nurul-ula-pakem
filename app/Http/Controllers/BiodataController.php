@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pegawai;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BiodataController extends Controller
 {
@@ -61,7 +67,7 @@ class BiodataController extends Controller
         //
         $user = User::find($id);
         $role = Role::all();
-        $jenjang = Jenjang::all();
+        $jenjang = Pegawai::all();
         return view('admin.profil-edit', compact('user', 'role', 'jenjang'));
     }
 
@@ -91,21 +97,21 @@ class BiodataController extends Controller
 
         if ($validator->fails()) {
             Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-            return redirect()->route('profil.edit', $id)->withErrors($validator)
+            return redirect()->route('profil-user-edit', $id)->withErrors($validator)
                 ->withInput()->with(['status' => 'Terjadi Kesalahan', 'title' => 'Edit Profil', 'type' => 'error']);
         }
 
         if($user->id_jenjang){
             if (is_null($request->jenjang)) {
                 Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-                return redirect()->route('profil.edit', $id)->with('jenjang', 'Jenjang harus diisi');
+                return redirect()->route('profil-user-edit', $id)->with('jenjang', 'Jenjang harus diisi');
             }
         }
 
         // Validasi apakah input email valid
         if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
             Alert::alert('Kesalahan', 'Terjadi Kesalahan ', 'error');
-            return redirect()->route('profil.edit', $id)->with('email', 'Format Email tidak valid');
+            return redirect()->route('profil-user-edit', $id)->with('email', 'Format Email tidak valid');
         }
 
         // Cek apakah embed HTML sudah ada di tabel desa
@@ -145,7 +151,7 @@ class BiodataController extends Controller
         ]);
 
         Alert::alert('Berhasil', 'Profil berhasil diedit ', 'success');
-        return redirect()->route('profil.index')->withSuccess('Profil berhasil diedit');
+        return redirect()->route('profil-user-index', $id)->withSuccess('Profil berhasil diedit');
     }
 
     /**

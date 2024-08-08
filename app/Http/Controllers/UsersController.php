@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jenjang;
+use App\Models\Profil;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -34,8 +34,8 @@ class UsersController extends Controller
     {
         //
         $role = Role::where('nama_role', '!=', 'superadmin')->get();
-        $jenjang = Jenjang::all();
-        return view('admin.users.users_add', compact('role', 'jenjang'));
+        $profil = Profil::all();
+        return view('admin.users.users_add', compact('role', 'profil'));
     }
 
     /**
@@ -111,10 +111,10 @@ class UsersController extends Controller
     {
         //
         $role = Role::where('nama_role', '!=', 'superadmin')->get();
-        $jenjang = Jenjang::all();
+        $profil = Profil::all();
         $user = User::find($id);
 
-        return view('admin.users.users_edit', compact('role', 'jenjang', 'user'));
+        return view('admin.users.users_edit', compact('role', 'profil', 'user'));
     }
 
     /**

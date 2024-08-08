@@ -1,10 +1,10 @@
-@section('title', 'Edit Profil')
+@section('title', 'Ganti Password')
 @include('admin.template.header')
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-5 text-gray-800">Edit Profil</h1>
+                    <h1 class="h3 mb-5 text-gray-800">Ganti Password</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -59,7 +59,7 @@
                                         <hr class="mt-5">
                                         <div class="d-flex mb-3">
                                             <button type="submit" class="btn btn-sm mr-5 btn-warning text-white"><i class="fas fa-edit"></i></i> Ubah</button>
-                                            <a href="{{ route('profil.index') }}" class="btn btn-sm btn-info text-white"><i class="fas fa-arrow-alt-circle-left"></i></i> Kembali</a>
+                                            <a href="{{ route('profil-user-index', $user->id) }}" class="btn btn-sm btn-info text-white"><i class="fas fa-arrow-alt-circle-left"></i></i> Kembali</a>
                                         </div>
                                     </div>
                                 </div>

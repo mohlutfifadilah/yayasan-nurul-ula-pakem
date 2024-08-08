@@ -94,19 +94,19 @@
               <span class="fs-4 text-white ms-4">Yayasan Nurul Ula</span>
             </a>
             @php
-                $jenjang2 = \App\Models\Jenjang::all();
+                $profil = \App\Models\Profil::all();
             @endphp
             <ul class="nav nav-underline" style="font-size: 14px;">
               <li class="nav-item"><a href="/" class="nav-link {{ Request::segment(1) === null ? 'active' : '' }}" aria-current="page">Beranda</a></li>
-              @foreach ($jenjang2 as $j)
+              @foreach ($profil as $p)
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle {{ Request::segment(1) === $j->nama_jenjang ? 'active' : '' }}" data-bs-toggle="dropdown" role="button" aria-expanded="false">{{ $j->nama_jenjang }}</a>
+                  <a class="nav-link dropdown-toggle {{ Request::segment(1) === $p->nama ? 'active' : '' }}" data-bs-toggle="dropdown" role="button" aria-expanded="false">{{ $p->nama }}</a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ route('deskripsi-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Profil</a></li>
-                    <li><a class="dropdown-item" href="{{ route('tenaga-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Tenaga Pengajar</a></li>
-                    <li><a class="dropdown-item" href="{{ route('struktur-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Stukrur Organisasi</a></li>
-                    <li><a class="dropdown-item" href="{{ route('kegiatan-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="{{ route('artikel-index', ['jenjang' => $j->nama_jenjang, 'id' => $j->id]) }}">Berita</a></li>
+                    <li><a class="dropdown-item" href="{{ route('deskripsi-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Profil</a></li>
+                    <li><a class="dropdown-item" href="{{ route('tenaga-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Tenaga Pengajar</a></li>
+                    <li><a class="dropdown-item" href="{{ route('struktur-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Stukrur Organisasi</a></li>
+                    <li><a class="dropdown-item" href="{{ route('kegiatan-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('artikel-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Berita</a></li>
                   </ul>
                 </li>
               @endforeach
