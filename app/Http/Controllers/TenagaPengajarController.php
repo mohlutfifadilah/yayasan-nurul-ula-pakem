@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use PDF;
+
 class TenagaPengajarController extends Controller
 {
     /**
@@ -228,5 +230,16 @@ class TenagaPengajarController extends Controller
     public function export_excel($jenjang, $id){
         $profil = Profil::find($id);
         return Excel::download(new TenagaPengajarExport($id), 'tenaga-pengajar-' . $profil->nama . '.xlsx');
+    }
+
+    public function export_pdf($jenjang, $id){
+        // Mengambil data pegawai dengan kolom 'nama_lengkap' dan 'jabatan'
+        $pegawai = Pegawai::select('nama_lengkap', 'jabatan')->where('id_profil', $id)->get();
+
+        $profil = Profil::find($id);
+
+    	$pdf = PDF::loadview('admin.tenaga-pengajar.export-pdf',['pegawai'=>$pegawai, 'profil' => $profil]);
+
+    	return $pdf->download('tenaga-pengajar-' . $profil->nama);
     }
 }

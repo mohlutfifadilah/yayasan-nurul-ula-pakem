@@ -12,8 +12,8 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-end mb-3">
                                 <a href="{{ route('tenagapengajar-export-excel', ['jenjang' => $profil->nama, 'id' => $profil->id]) }}" class="btn btn-success mb-3 mr-3"><i class="fas fa-file-excel"></i> Export Excel</a>
-                                <a href="{{ route('tenagapengajar-export-excel', ['jenjang' => $profil->nama, 'id' => $profil->id]) }}" class="btn btn-danger mb-3 mr-3"><i class="fas fa-file-pdf"></i> Export PDF</a>
-                                <a href="{{ route('tenagapengajar-create', ['jenjang' => $profil->nama, 'id' => $profil->id]) }}" class="btn btn-success mb-3"><i class="fas fa-plus-circle"></i> Tambah</a>
+                                <a href="{{ route('tenagapengajar-export-pdf', ['jenjang' => $profil->nama, 'id' => $profil->id]) }}" class="btn btn-danger mb-3 mr-5"><i class="fas fa-file-pdf"></i> Export PDF</a>
+                                <a href="{{ route('tenagapengajar-create', ['jenjang' => $profil->nama, 'id' => $profil->id]) }}" class="btn btn-success mb-3 ml-5"><i class="fas fa-plus-circle"></i> Tambah</a>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

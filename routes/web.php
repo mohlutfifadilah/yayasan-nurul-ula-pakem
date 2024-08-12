@@ -64,6 +64,7 @@ Route::middleware(['Auth'])->group(function(){
     Route::delete('/{jenjang}/tenaga-pengajar/destroy/{profil}/{id}', [TenagaPengajarController::class, 'destroy'])->name('tenagapengajar-destroy');
 
     Route::get('/{jenjang}/tenaga-pengajar/export-excel/{id}', [TenagaPengajarController::class, 'export_excel'])->name('tenagapengajar-export-excel');
+    Route::get('/{jenjang}/tenaga-pengajar/export-pdf/{id}', [TenagaPengajarController::class, 'export_pdf'])->name('tenagapengajar-export-pdf');
 
     // kegiatan
     Route::get('/{jenjang}/kegiatan/{id}', [KegiatanController::class, 'index'])->name('kegiatan-index');
