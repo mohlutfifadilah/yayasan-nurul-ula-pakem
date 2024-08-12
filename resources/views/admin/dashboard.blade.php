@@ -10,7 +10,7 @@
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
     </div>
 
-    {{-- <!-- Content Row -->
+    <!-- Content Row -->
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->
@@ -20,11 +20,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Pengguna</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count_user }}</div>
+                                Jenjang</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count_jenjang }}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                            <i class="fas fa-school fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -38,11 +38,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Berita</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count_berita }}</div>
+                                Tenaga Pengajar</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count_tenagapengajar }}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+                            <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -55,16 +55,16 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Registrasi
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Kegiatan
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $count_pendaftaran }}</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $count_kegiatan }}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-tasks fa-2x text-gray-300"></i>
+                            <i class="fas fa-handshake fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -78,11 +78,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Riwayat</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count_riwayat }}</div>
+                                Artikel</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count_artikel }}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-history fa-2x text-gray-300"></i>
+                            <i class="fas fa-newspaper fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <!-- Content Row -->
+    {{-- <!-- Content Row -->
 
     <div class="row">
 
@@ -144,12 +144,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
-<script>
+{{-- <script>
     var dataFromController = {
         labels: {!! json_encode($dataFromController['labels']) !!},
         data: {!! json_encode($dataFromController['data']) !!}
