@@ -31,19 +31,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/{jenjang}/deskripsi/{id}', [DeskripsiController::class, 'deskripsi'])->name('deskripsi-index');
-Route::get('/{jenjang}/tenaga-pengajar/{id}', [DeskripsiController::class, 'tenaga'])->name('tenaga-index');
+Route::get('/{jenjang}/tenagapengajar/{id}', [DeskripsiController::class, 'tenaga'])->name('tenaga-index');
 Route::get('/{jenjang}/struktur/{id}', [DeskripsiController::class, 'struktur'])->name('struktur-index');
-Route::get('/{jenjang}/kegiatan/{id}', [DeskripsiController::class, 'kegiatan'])->name('kegiatan-index');
-Route::get('/{jenjang}/artikel/{id}', [DeskripsiController::class, 'artikel'])->name('artikel-index');
+Route::get('/{jenjang}/foto-kegiatan/{id}', [DeskripsiController::class, 'kegiatan'])->name('foto-kegiatan-index');
+Route::get('/{jenjang}/artikel-berita/{id}', [DeskripsiController::class, 'artikel'])->name('artikel-berita-index');
+Route::get('/{jenjang}/artikel-berita-show/{id_profil}/{id}', [DeskripsiController::class, 'artikel_show'])->name('artikel-berita-show');
 Route::get('/tentang', [TentangController::class, 'index']);
 
 # Admin
+Route::middleware(['Auth', 'superadmin'])->group(function (){
+    Route::resource('users', UsersController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('jenjang', JenjangController::class);
+});
 Route::middleware(['Auth'])->group(function(){
-    Route::middleware('role:1')->group(function (){
-        Route::resource('users', UsersController::class);
-        Route::resource('role', RoleController::class);
-        Route::resource('jenjang', JenjangController::class);
-    });
     Route::get('/dashboard',  [DashboardController::class, 'index']);
     Route::get('/profil-user/{id}', [BiodataController::class, 'index'])->name('profil-user-index');
     Route::get('/profil-user/edit/{id}', [BiodataController::class, 'edit'])->name('profil-user-edit');

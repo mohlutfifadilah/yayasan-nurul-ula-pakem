@@ -16,9 +16,9 @@ class checkRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $role)
+    public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role != $role){
+        if(Auth::user()->id_role != 1){
             Alert::alert('Kesalahan', 'Anda tidak diizinkan mengaksesnya', 'error');
             return redirect()->back();
         }

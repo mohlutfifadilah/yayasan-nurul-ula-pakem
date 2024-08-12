@@ -1,21 +1,26 @@
 @section('title', 'Beranda | Yayasan Nurul Ula')
 @include('template.header')
+@php
+    use Carbon\Carbon;
+
+    // Mengatur locale Carbon ke bahasa Indonesia
+    Carbon::setLocale('id');
+@endphp
     <section title="content">
         <div class="container">
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-md-8">
-                    <h3 class="text-success">Kegiatan</h3>
+                    <h3 class="text-success mb-3">Kegiatan</h3>
                     <div id="carouselExampleAutoplaying" class="carousel slide mt-2 mb-4" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                            <img src="{{ asset('logo.png') }}" class="d-block" alt="..." style="height: 395px; width: 862px;">
-                            </div>
-                            <div class="carousel-item">
-                            <img src="{{ asset('logo.png') }}" class="d-block" alt="..." style="height: 395px; width: 862px;">
-                            </div>
-                            <div class="carousel-item">
-                            <img src="{{ asset('logo.png') }}" class="d-block" alt="..." style="height: 395px; width: 862px;">
-                            </div>
+                            @foreach ($kegiatan as $index => $k)
+                            @php
+                                $profil = \App\Models\Profil::where('id', $k->id_profil)->first();
+                            @endphp
+                                <div class="carousel-item @if($index === 1) active @endif">
+                                    <img src="{{ asset('storage/kegiatan/' . $profil->nama . '/' . $k->foto) }}" class="d-block" alt="..." style="height: 395px; width: 862px;">
+                                </div>
+                            @endforeach
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -27,48 +32,27 @@
                         </button>
                     </div>
                     <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <div class="col">
-                            <a href="" class="text-decoration-none">
+                        @foreach ($artikel as $index => $a)
+                            @php
+                                $profil = \App\Models\Profil::where('id', $a->id_profil)->first();
+                                $isi = \Illuminate\Support\Str::words(strip_tags($a->isi), 500, '...');
+                            @endphp
+                            <div class="col">
                                 <div class="card h-100 rounded-0 border-success">
-                                    <img src="{{ asset('logo.jpg') }}" class="card-img-top rounded-0" alt="..." style="width: 273.33px; height: 150px;">
+                                    <img src="{{ asset('storage/thumbnail-artikel/' . $profil->nama . '/' . $a->thumbnail) }}" class="card-img-top rounded-0" alt="..." style="width: 273.33px; height: 150px;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-truncate">Card title</h5>
-                                        <p class="card-text text-truncate" style="max-width: 550px;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore doloremque accusamus laboriosam consequuntur molestias dolorum. Nobis velit, amet voluptatum animi optio delectus repellendus officia est ipsum. In assumenda molestiae ex?</p>
+                                        <h5 class="card-title text-truncate">{{ $a->judul }}</h5>
+                                        <p class="card-text multi-line-truncate">{!! $isi !!}</p>
+                                        <a href="{{ route('artikel-berita-show', ['jenjang' => $profil->nama, 'id_profil' => $profil->id, 'id' => $a->id]) }}" class="text-decoration-none mt-3">
+                                            Lihat Selengkapnya ->
+                                        </a>
                                     </div>
                                     <div class="card-footer border-success">
-                                        <small class="text-body-secondary">Last updated 3 mins ago</small>
+                                        <small class="text-body-secondary">{{ Carbon::parse($a->created_at)->diffForHumans() }}</small>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="" class="text-decoration-none">
-                                <div class="card h-100 rounded-0 border-success">
-                                    <img src="{{ asset('logo.jpg') }}" class="card-img-top rounded-0" alt="..." style="width: 273.33px; height: 150px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-truncate">Card title</h5>
-                                        <p class="card-text text-truncate">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore doloremque accusamus laboriosam consequuntur molestias dolorum. Nobis velit, amet voluptatum animi optio delectus repellendus officia est ipsum. In assumenda molestiae ex?</p>
-                                    </div>
-                                    <div class="card-footer border-success">
-                                        <small class="text-body-secondary">Last updated 3 mins ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="" class="text-decoration-none">
-                                <div class="card h-100 rounded-0 border-success">
-                                    <img src="{{ asset('logo.jpg') }}" class="card-img-top rounded-0" alt="..." style="width: 273.33px; height: 150px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-truncate">Card title</h5>
-                                        <p class="card-text text-truncate">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore doloremque accusamus laboriosam consequuntur molestias dolorum. Nobis velit, amet voluptatum animi optio delectus repellendus officia est ipsum. In assumenda molestiae ex?</p>
-                                    </div>
-                                    <div class="card-footer border-success">
-                                        <small class="text-body-secondary">Last updated 3 mins ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 @include('template.contact')
@@ -86,7 +70,7 @@
                                 <p class="text-success" style="font-size: 48px;">
                                     250+
                                 </p>
-                                <p class="fs-6"><b>Murid</b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quaerat atque labore cupiditate minus rem ipsum necessitatibus ea eveniet perferendis assumenda ratione modi quas, adipisci debitis quia. Animi, cum veritatis.</p>
+                                <p class="fs-6"><b>Murid</b> dari seluruh jenjang pendidikan yakni PAUD, RA, dan MI.</p>
                             </div>
                         </div>
                     </div>
@@ -99,7 +83,7 @@
                                 <p class="text-success" style="font-size: 48px;">
                                     18
                                 </p>
-                                <p class="fs-6"><b>Guru</b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quaerat atque labore cupiditate minus rem ipsum necessitatibus ea eveniet perferendis assumenda ratione modi quas, adipisci debitis quia. Animi, cum veritatis.</p>
+                                <p class="fs-6"><b>Tenaga Pengajar</b> untuk mendukung proses pembelajaran.</p>
                             </div>
                         </div>
                     </div>
@@ -112,7 +96,7 @@
                                 <p class="text-success" style="font-size: 48px;">
                                     390+
                                 </p>
-                                <p class="fs-6"><b>Kegiatan</b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quaerat atque labore cupiditate minus rem ipsum necessitatibus ea eveniet perferendis assumenda ratione modi quas, adipisci debitis quia. Animi, cum veritatis.</p>
+                                <p class="fs-6"><b>Kegiatan</b> menyenangkan demi peserta didik yang aktif.</p>
                             </div>
                         </div>
                     </div>

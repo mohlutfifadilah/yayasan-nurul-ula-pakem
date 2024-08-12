@@ -5,13 +5,9 @@
             <div class="row">
                 <div class="col-md-8">
                     <h3 class="text-success">Profil - {{ $profil->nama }}</h3>
-                </div>
-                @include('template.contact')
-            </div>
-            <div class="row">
-                <div class="col-md-12">
                     {!! $profil->deskripsi !!}
                 </div>
+                @include('template.contact')
             </div>
         </div>
     </section>
