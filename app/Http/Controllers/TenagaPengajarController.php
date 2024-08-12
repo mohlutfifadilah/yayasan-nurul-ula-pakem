@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TenagaPengajarExport;
 use App\Models\Pegawai;
 use App\Models\Profil;
 use App\Models\Tenaga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class TenagaPengajarController extends Controller
@@ -221,5 +223,10 @@ class TenagaPengajarController extends Controller
 
         Alert::alert('Berhasil', 'Tenaga Pengajar berhasil dihapus ', 'success');
         return redirect()->route('tenagapengajar-index', ['id' => $profil->id, 'jenjang' => $profil->nama])->withSuccess('Tenaga Pengajar berhasil dihapus');
+    }
+
+    public function export_excel($jenjang, $id){
+        $profil = Profil::find($id);
+        return Excel::download(new TenagaPengajarExport($id), 'tenaga-pengajar-' . $profil->nama . '.xlsx');
     }
 }
