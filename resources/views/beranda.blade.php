@@ -81,7 +81,7 @@
                             </div>
                             <div class="col-md-8">
                                 <p class="text-success" style="font-size: 48px;">
-                                    18
+                                    {{ $count_pegawai }}
                                 </p>
                                 <p class="fs-6"><b>Tenaga Pengajar</b> untuk mendukung proses pembelajaran.</p>
                             </div>
@@ -94,7 +94,7 @@
                             </div>
                             <div class="col-md-8">
                                 <p class="text-success" style="font-size: 48px;">
-                                    390+
+                                    {{ $count_kegiatan }}
                                 </p>
                                 <p class="fs-6"><b>Kegiatan</b> menyenangkan demi peserta didik yang aktif.</p>
                             </div>

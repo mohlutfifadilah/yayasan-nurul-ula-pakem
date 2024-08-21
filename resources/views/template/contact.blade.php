@@ -28,13 +28,13 @@
         </div>
         <div class="col-md-7">
             <p class="fs-5">
-                089032908392 (PAUD)
+                085740322221 &nbsp; [PAUD]
             </p>
             <p class="fs-5">
-                089032908392 (RA)
+                081392197202 &nbsp; [RA]
             </p>
             <p class="fs-5">
-                089032908392 (MI)
+                085640026441 &nbsp; [MI]
             </p>
         </div>
     </div>
@@ -43,16 +43,34 @@
         <div class="col-md-5 text-center">
             <img src="{{ asset('logo.png') }}" alt="" class="img-fluid" style="width: 90px; height: 90px;">
         </div>
-        <div class="col-md-7 text-center">
+        <div class="col-md-7">
             <p class="fs-5">
                 Terhubung dengan kami :
             </p>
-            <div class="social-icons">
+            <p class="fs-5">
+                <i class="bi bi-instagram text-success"></i> &nbsp;
+                <a href="https://www.instagram.com/paud_binaakhlaq/" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                    @paud_binaakhlaq
+                </a>
+            </p>
+            <p class="fs-5">
+                <i class="bi bi-instagram text-success"></i> &nbsp;
+                <a href="https://www.instagram.com/rabinaakhlaq/" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                    @rabinaakhlaq
+                </a>
+            </p>
+            <p class="fs-5">
+                <i class="bi bi-instagram text-success"></i> &nbsp;
+                <a href="https://www.instagram.com/mibinaakhlaq/" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                    @mibinaakhlaq
+                </a>
+            </p>
+            {{-- <div class="social-icons">
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="tiktok"><i class="bi bi-tiktok"></i></a>
                 <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
