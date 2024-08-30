@@ -17,7 +17,7 @@
                             @php
                                 $profil = \App\Models\Profil::where('id', $k->id_profil)->first();
                             @endphp
-                                <div class="carousel-item @if($index === 1) active @endif">
+                                <div class="carousel-item @if($index === 0) active @endif">
                                     <img src="{{ asset('storage/kegiatan/' . $profil->nama . '/' . $k->foto) }}" class="d-block" alt="..." style="height: 395px; width: 862px;">
                                 </div>
                             @endforeach

@@ -166,7 +166,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-success">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img src="{{ asset('logo.png') }}" width="40" height="40" alt="">
-                <span class="fs-4 text-white ms-4">Yayasan Nurul Ula</span>
+                <span class="fs-4 text-white ms-4">Yayasan Nurul Ula Pakem</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

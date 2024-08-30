@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-7">
             <p class="fs-5">
-                Area Sawah, Pakembinangun, Kec. Pakem, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55582
+                Jl. Kaliurang KM.18, Paraksari, Pakembinangun, Kec. Pakem, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55582
             </p>
         </div>
         <div class="col-md-4">
