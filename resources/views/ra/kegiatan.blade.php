@@ -1,10 +1,10 @@
-@section('title', 'Kegiatan-' . $jenjang->nama . ' | Yayasan Nurul Ula')
+@section('title', 'Kegiatan-' . $profil->nama . ' | Yayasan Nurul Ula')
 @include('template.header')
     <section title="content">
         <div class="container">
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-md-8">
-                    <h3 class="text-success">Kegiatan - {{ $jenjang->nama }}</h3>
+                    <h3 class="text-success mb-5">Kegiatan - {{ $profil->nama }}</h3>
                     <div class="row">
                         @foreach ($kegiatan as $k)
                             <div class="col-md-4">

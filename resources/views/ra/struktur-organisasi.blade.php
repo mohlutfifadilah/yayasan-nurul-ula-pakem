@@ -1,10 +1,10 @@
-@section('title', 'Struktur Organisasi-' . $jenjang->nama . ' | Yayasan Nurul Ula')
+@section('title', 'Struktur Organisasi-' . $profil->nama . ' | Yayasan Nurul Ula')
 @include('template.header')
     <section title="content">
         <div class="container">
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-md-8">
-                    <h3 class="text-success">Struktur Organisasi - {{ $jenjang->nama }}</h3>
+                    <h3 class="text-success mb-5">Struktur Organisasi - {{ $profil->nama }}</h3>
                     <div class="text-center">
                         @if($profil->struktur_organisasi)
                             <img src="{{ asset('storage/struktur-organisasi/' . $profil->struktur_organisasi ) }}" alt="" class="img-fluid" style="width: 500px; height: 500px;">
