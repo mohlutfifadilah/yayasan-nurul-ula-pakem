@@ -1,204 +1,176 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+
+    <!-- Basic -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <!-- Site Metas -->
     <title>@yield('title')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{{ asset('logo.png') }}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
 
-    <!-- Favicons -->
-    <link href="{{ asset('logo.png') }}" rel="icon">
-    <link href="{{ asset('logo.png') }}" rel="apple-touch-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- ALL VERSION CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/versions.css') }}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/timeline.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
 
-    <style>
-      *{
-        font-family: "Rubik", sans-serif;
-      }
+    <!-- Modernizer for Portfolio -->
+    <script src="{{ asset('assets/js/modernizer.js') }}"></script>
 
-      .nav-underline .nav-item{
-        margin: 0 16px;
-      }
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-      .nav-underline .nav-item a{
-        color: #FFFFFF;
-      }
+</head>
+<body class="host_version">
 
-      .nav-underline .nav-item a.active{
-        color: #FFFFFF;
-        border-bottom: 3px solid #FFFFFF;
-        font-weight: 600;
-      }
+	<!-- Modal -->
+	{{-- <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header tit-up">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Customer Login</h4>
+			</div>
+			<div class="modal-body customer-box">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li><a class="active" href="#Login" data-toggle="tab">Login</a></li>
+					<li><a href="#Registration" data-toggle="tab">Registration</a></li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active" id="Login">
+						<form role="form" class="form-horizontal">
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="email1" placeholder="Name" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="exampleInputPassword1" placeholder="Email" type="email">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-10">
+									<button type="submit" class="btn btn-light btn-radius btn-brd grd1">
+										Submit
+									</button>
+									<a class="for-pwd" href="javascript:;">Forgot your password?</a>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane" id="Registration">
+						<form role="form" class="form-horizontal">
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" placeholder="Name" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="email" placeholder="Email" type="email">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="mobile" placeholder="Mobile" type="email">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="password" placeholder="Password" type="password">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-10">
+									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
+										Save &amp; Continue
+									</button>
+									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
+										Cancel</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</div> --}}
 
-      .nav-underline .dropdown .dropdown-menu li a{
-        color: #198754;
-      }
+    <!-- LOADER -->
+	{{-- <div id="preloader">
+		<div class="loader-container">
+			<div class="progress-br float shadow">
+				<div class="progress__item"></div>
+			</div>
+		</div>
+	</div> --}}
+	<!-- END LOADER -->
 
-      .nav-underline .dropdown .dropdown-menu li a:hover{
-        background-color: #198754;
-        color: #FFFFFF;
-      }
-
-      .dropdown-menu {
-        display: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        margin-top: 0;
-      }
-
-      .dropdown:hover .dropdown-menu {
-        display: block;
-        opacity: 1;
-      }
-
-        .social-icons a {
-        display: inline-block;
-        border-radius: 50%;
-        color: white;
-        text-decoration: none;
-        width: 30px;
-        height: 30px;
-        padding-top: 6px;
-        padding-left: 0.5px;
-        margin: 0 5px;
-        }
-
-        .facebook {
-        background-color: #3b5998;
-        }
-
-        .instagram {
-        background-color: #e1306c;
-        }
-
-        .tiktok {
-        background-color: #2f2e2e;
-        }
-
-        .youtube {
-        background-color: #ff0000;
-        }
-
-        .toZoom {
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
-
-        .toZoom:hover {opacity: 0.7;}
-
-        .modal {
-        display: none; /* Hidden by default */
-        position: absolute; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-        }
-
-        /* Modal Content (image) */
-        .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        }
-
-        /* Add Animation */
-        .modal-content {
-        animation-name: zoom;
-        animation-duration: 0.6s;
-        }
-
-        @keyframes zoom {
-        from {transform: scale(0.1)}
-        to {transform: scale(1)}
-        }
-
-        /* The Close Button */
-        .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-        }
-
-        /* 100% Image Width on Smaller Screens */
-        @media only screen and (max-width: 700px){
-        .modal-content {
-            width: 100%;
-        }
-        }
-
-        .multi-line-truncate {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    </style>
-  </head>
-  <body>
-    <section title="navbar" class="bg-success">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <img src="{{ asset('logo.png') }}" width="40" height="40" alt="">
-                <span class="fs-4 text-white ms-4">Yayasan Nurul Ula Pakem</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ms-auto nav-underline" style="font-size: 14px;">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link {{ Request::segment(1) === null ? 'active' : '' }}" aria-current="page">Beranda</a>
-                    </li>
-                    @php
-                        $profil = \App\Models\Profil::all();
-                    @endphp
-                    @foreach ($profil as $p)
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{ Request::segment(1) === $p->nama ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ $p->nama }}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ route('deskripsi-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Profil</a></li>
-                                <li><a class="dropdown-item" href="{{ route('tenaga-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Tenaga Pengajar</a></li>
-                                <li><a class="dropdown-item" href="{{ route('struktur-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Stuktur Organisasi</a></li>
-                                <li><a class="dropdown-item" href="{{ route('foto-kegiatan-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Kegiatan</a></li>
-                                <li><a class="dropdown-item" href="{{ route('artikel-berita-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Berita</a></li>
-                            </ul>
-                        </li>
-                    @endforeach
-                    <li class="nav-item">
-                        <a href="/tentang" class="nav-link {{ Request::segment(1) === 'tentang' ? 'active' : '' }}">Tentang</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</section>
-
+	<!-- Start header -->
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/">
+					<img src="{{ asset('logo.png') }}" alt="" width="60" height="60"/>
+                    <span class="text-white ms-1" style="font-size: 18px;">Yayasan Nurul Ula Pakem</span>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-host">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item {{ Request::segment(1) === null ? 'active' : '' }}"><a class="nav-link" href="/">Beranda</a></li>
+                        @php
+                            $profil = \App\Models\Profil::all();
+                        @endphp
+						@foreach ($profil as $p)
+                            <li class="nav-item dropdown {{ Request::segment(1) === $p->nama ? 'active' : '' }}">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">{{ $p->nama }} </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                    <a class="dropdown-item" href="{{ route('deskripsi-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Profil</a>
+                                    <a class="dropdown-item" href="{{ route('tenaga-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Tenaga Pengajar </a>
+                                    <a class="dropdown-item" href="{{ route('struktur-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Struktur Organisasi </a>
+                                    <a class="dropdown-item" href="{{ route('foto-kegiatan-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Kegiatan </a>
+                                    <a class="dropdown-item" href="{{ route('artikel-berita-index', ['jenjang' => $p->nama, 'id' => $p->id]) }}">Berita </a>
+                                </div>
+                            </li>
+                        @endforeach
+						<li class="nav-item {{ Request::segment(1) === 'tentang' ? 'active' : '' }}"><a class="nav-link" href="/tentang">Tentang Kami</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'kontak' ? 'active' : '' }}"><a class="nav-link" href="/kontak">Kontak</a></li>
+					</ul>
+					{{-- <ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log orange" href="#" data-toggle="modal" data-target="#login"><span>Book Now</span></a></li>
+                    </ul> --}}
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
