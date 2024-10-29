@@ -7,6 +7,7 @@ use App\Http\Controllers\DeskripsiController;
 use App\Http\Controllers\GantiPassword;
 use App\Http\Controllers\JenjangController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfilController;
@@ -37,6 +38,7 @@ Route::get('/{jenjang}/foto-kegiatan/{id}', [DeskripsiController::class, 'kegiat
 Route::get('/{jenjang}/artikel-berita/{id}', [DeskripsiController::class, 'artikel'])->name('artikel-berita-index');
 Route::get('/{jenjang}/artikel-berita-show/{id_profil}/{id}', [DeskripsiController::class, 'artikel_show'])->name('artikel-berita-show');
 Route::get('/tentang', [TentangController::class, 'index']);
+Route::get('/kontak', [KontakController::class, 'index']);
 
 # Admin
 Route::middleware(['Auth', 'superadmin'])->group(function (){
