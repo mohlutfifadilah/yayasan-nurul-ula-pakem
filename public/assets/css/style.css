@@ -3868,6 +3868,14 @@ a.link-style3 {
 	color: #FFC107;
 }
 
+.multi-line-truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ubah angka ini sesuai jumlah baris yang diinginkan */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 
 

@@ -258,6 +258,51 @@
 		</div><!-- end container -->
 	</div><!-- end section -->
 
+    <div id="overviews" class="section wb">
+        <div class="container">
+            <div class="section-title row text-center">
+                <div class="col-md-8 offset-md-2">
+                    <h3>Berita Terbaru</h3>
+                    {{-- <p class="lead">Lorem Ipsum dolroin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem!</p> --}}
+                </div>
+            </div><!-- end title -->
+
+            <hr class="invis">
+
+            <div class="row">
+                @foreach ($artikel as $index => $a)
+                    @php
+                        $profil = \App\Models\Profil::where('id', $a->id_profil)->first();
+                        $isi = \Illuminate\Support\Str::words(strip_tags($a->isi), 250, '...');
+                    @endphp
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="blog-item">
+                            <div class="image-blog">
+                                <img src="{{ asset('storage/thumbnail-artikel/' . $profil->nama . '/' . $a->thumbnail) }}" alt="" class="img-fluid">
+                            </div>
+                            <div class="meta-info-blog">
+                                <span><i class="fa fa-calendar"></i> <a href="#">{{ Carbon::parse($a->created_at)->diffForHumans() }}</a> </span>
+                                {{-- <span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
+                                <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span> --}}
+                            </div>
+                            <div class="blog-title">
+                                <h2><a href="#" title="">{{ $a->judul }}</a></h2>
+                            </div>
+                            <div class="blog-desc">
+                                <p class="multi-line-truncate">
+                                    {!! $isi !!}
+                                </p>
+                            </div>
+                            <div class="blog-button">
+                                <a class="hover-btn-new orange" href="{{ route('artikel-berita-show', ['jenjang' => $profil->nama, 'id_profil' => $profil->id, 'id' => $a->id]) }}"><span>Selengkapnya</span></a>
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+                @endforeach
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
     {{-- <div id="plan" class="section lb">
         <div class="container">
             <div class="section-title text-center">
