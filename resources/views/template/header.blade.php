@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
 
+    <!-- Get minor updates and patch fixes within a major version -->
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
+
     <!-- Modernizer for Portfolio -->
     <script src="{{ asset('assets/js/modernizer.js') }}"></script>
 
@@ -163,8 +166,8 @@
                                 </div>
                             </li>
                         @endforeach
-						<li class="nav-item {{ Request::segment(1) === 'tentang' ? 'active' : '' }}"><a class="nav-link" href="/tentang">Tentang Kami</a></li>
-						<li class="nav-item {{ Request::segment(1) === 'kontak' ? 'active' : '' }}"><a class="nav-link" href="/kontak">Kontak</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'tentang' ? 'active' : '' }}"><a class="nav-link" data-scroll href="/#tentang">Tentang Kami</a></li>
+						<li class="nav-item {{ Request::segment(1) === 'kontak' ? 'active' : '' }}"><a class="nav-link" data-scroll href="/#kontak">Kontak</a></li>
 					</ul>
 					{{-- <ul class="nav navbar-nav navbar-right">
                         <li><a class="hover-btn-new log orange" href="#" data-toggle="modal" data-target="#login"><span>Book Now</span></a></li>

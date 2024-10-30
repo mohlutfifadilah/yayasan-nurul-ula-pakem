@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer" id="kontak">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-xs-12">
@@ -23,8 +23,8 @@
                             <h3>Informasi</h3>
                         </div>
                         <ul class="footer-links">
-                            <li><a href="/tentang">Tentang Kami</a></li>
-                            <li><a href="/kontak">Kontak</a></li>
+                            <li><a data-scroll href="#tentang">Tentang Kami</a></li>
+                            <li><a data-scroll href="#kontak">Kontak</a></li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
@@ -69,6 +69,11 @@
 	<script src="{{ asset('assets/js/timeline.min.js') }}"></script>
 	<script src="{{ asset('assets/js/owl.carousel.js') }}"></script>
 	<script>
+        var scroll = new SmoothScroll('a[href*="#"]', {
+            speed: 1500,
+	        speedAsDuration: true
+        });
+
 		timeline(document.querySelectorAll('.timeline'), {
 			forceVerticalMode: 700,
 			mode: 'horizontal',

@@ -17,6 +17,6 @@ class MainController extends Controller
 
         $count_pegawai = Pegawai::all()->count();
         $count_kegiatan = Kegiatan::all()->count();
-        return view('beranda2', compact('kegiatan', 'artikel', 'count_pegawai', 'count_kegiatan'));
+        return view('beranda', compact('kegiatan', 'artikel', 'count_pegawai', 'count_kegiatan'));
     }
 }
