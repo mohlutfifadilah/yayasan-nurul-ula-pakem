@@ -3,9 +3,9 @@
     <section title="content">
         <div class="container">
             <div class="row mt-4">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <h3 class="text-success mb-5">Kegiatan - {{ $profil->nama }}</h3>
-                    <div class="row">
+                    <div class="row mb-5">
                         @foreach ($kegiatan as $k)
                             <div class="col-md-4">
                                 <img src="{{ asset('storage/kegiatan/' . $profil->nama . '/' . $k->foto ) }}" class="card-img-top rounded-0 toZoom" alt="" data-zoom-image>
@@ -18,7 +18,6 @@
                         @endforeach
                     </div>
                 </div>
-                @include('template.contact')
             </div>
         </div>
     </section>

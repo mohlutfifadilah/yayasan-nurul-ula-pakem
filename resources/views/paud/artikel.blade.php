@@ -50,7 +50,7 @@
                 @php
                     $isi = \Illuminate\Support\Str::words(strip_tags($a->isi), 250, '...');
                 @endphp
-                <div class="col-lg-4 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12 mt-3">
                     <div class="blog-item">
                         <div class="image-blog">
                             <img src="{{ asset('storage/thumbnail-artikel/' . $profil->nama . '/' . $a->thumbnail) }}" alt="" class="img-fluid">

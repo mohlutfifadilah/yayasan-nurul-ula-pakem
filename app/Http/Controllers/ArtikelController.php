@@ -145,14 +145,14 @@ class ArtikelController extends Controller
         $profil = Profil::where('id', $artikel->id_profil)->first();
 
         $validator = Validator::make($request->all(), [
-            'thumbnail' => 'required|mimes:jpeg,png,jpg|max:2048',
+            // 'thumbnail' => 'required|mimes:jpeg,png,jpg|max:2048',
             'judul' => 'required',
             'isi' => 'required',
         ],
         [
-            'thumbnail.mimes' => 'Format tidak valid',
-            'thumbnail.max' => 'Maksimal 2 mb',
-            'thumbnail.required' => 'Foto harus diisi',
+            // 'thumbnail.mimes' => 'Format tidak valid',
+            // 'thumbnail.max' => 'Maksimal 2 mb',
+            // 'thumbnail.required' => 'Foto harus diisi',
             'judul.required' => 'Judul harus diisi',
             'isi.required' => 'Isi harus diisi',
         ]);
@@ -172,6 +172,17 @@ class ArtikelController extends Controller
         // }
 
         if ($request->file('thumbnail')) {
+            // Dapatkan ekstensi file
+            $extension = strtolower($request->file('thumbnail')->getClientOriginalExtension());
+
+            // Tentukan format yang diperbolehkan
+            $allowedExtensions = ['jpg', 'jpeg', 'png'];
+
+            // Validasi format file
+            if (!in_array($extension, $allowedExtensions)) {
+                // File terlalu besar, kembalikan respons dengan pesan kesalahan
+                return redirect()->back()->with('thumbnail', 'Format tidak diizinkan');
+            }
             // Ambil ukuran file dalam bytes
             $fileSize = $request->file('thumbnail')->getSize();
 
