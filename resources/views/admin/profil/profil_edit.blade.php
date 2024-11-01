@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="deskripsi">Deskripsi</label>
-                                            <textarea id="summernote" name="deskripsi" class="form-control @if(session('jenjang')) is-invalid @endif @error('jenjang') is-invalid @enderror"></textarea>
+                                            <textarea id="summernote" name="deskripsi" class="form-control @if(session('deskripsi')) is-invalid @endif @error('deskripsi') is-invalid @enderror">{!! $profil->deskripsi !!}</textarea>
                                             @error('deskripsi')
                                                 <small id="deskripsi" class="text-danger">
                                                     {{ $message }}

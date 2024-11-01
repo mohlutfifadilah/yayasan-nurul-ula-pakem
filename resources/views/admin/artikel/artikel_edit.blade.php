@@ -54,7 +54,7 @@
                                         <div class="form-group">
                                             <label for="isi">Isi</label>
                                             <textarea id="summernote" name="isi" class="form-control @if(session('isi')) is-invalid @endif @error('isi') is-invalid @enderror">
-                                                {{ $artikel->isi }}
+                                                {!! $artikel->isi !!}
                                             </textarea>
                                             @error('isi')
                                                 <small id="isi" class="text-danger">
